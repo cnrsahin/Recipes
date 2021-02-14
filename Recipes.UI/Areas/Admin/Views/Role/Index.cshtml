@@ -1,0 +1,37 @@
+﻿@model RoleIndexViewModel
+@{ ViewBag.Title = "Rol Yönetimi"; }
+
+<ol class="breadcrumb mb-3 mt-2">
+    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Panel</a></li>
+    <li class="breadcrumb-item active">Roller</li>
+</ol>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table" id="homeDataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Rol Adı</th>
+                        <th>Rol Açıklaması</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var role in Model.Roles)
+                    {
+                        <tr>
+                            <th>@role.Id</th>
+                            <td>@role.Name</td>
+                            <td>@role.RoleDescription</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/AdminPages/js/dataTableTurkish.js" type="text/ecmascript"></script>
+}

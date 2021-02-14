@@ -1,0 +1,32 @@
+﻿@model UserLoginDto
+
+@{
+    Layout = "_AuthViewLayout";
+    ViewBag.Title = "Giriş Sayfası";
+}
+
+<form class="form-signin" asp-controller="Auth" asp-action="Login" method="post">
+    <h1 class="h3 mb-3 font-weight-normal">Oturum Açın</h1>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+    <div class="form-group">
+        <input type="text" asp-for="UserName" class="form-control" placeholder="Kullanıcı Adınız" required autofocus>
+    </div>
+
+    <div class="form-group">
+        <input type="password" class="form-control" asp-for="Password" placeholder="Şifreniz" required>
+    </div>
+
+    <div class="form-group text-left">
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" asp-for="RememberMe"> Beni hatırla!
+            </label>
+        </div>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Giriş</button>
+    <p class="mt-5 mb-3 text-muted">&copy; Yemek Tarifleri</p>
+</form>

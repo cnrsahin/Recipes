@@ -1,0 +1,65 @@
+﻿@model UserIndexViewModel
+@{ ViewBag.Title = "Kullanıcı Yönetimi"; }
+
+<ol class="breadcrumb mb-3 mt-2">
+    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Panel</a></li>
+    <li class="breadcrumb-item active">Kullanıcılar</li>
+</ol>
+
+
+
+<div class="card mb-4">
+    <div class="card-header">
+        <div class="mb-2 text-center">
+            <a class="btn btn-lg btn-outline-success" asp-controller="Home" asp-action="Index">Kullanıcı Ekle</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table" id="homeDataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Adı Soyadı</th>
+                        <th>Kullanıcı Adı</th>
+                        <th>Hakkında</th>
+                        <th>Fotoğraf</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.Users)
+                    {
+                        <tr>
+                            <th>@user.Id</th>
+                            <td>@user.Fullname</td>
+                            <td>@user.UserName</td>
+                            <td>@user.About</td>
+                            <td><img src="~/Pictures/userImgs/@user.Picture" class="table-image" /></td>
+                            <td>
+                                <button class="btn btn-sm btn-warning">Detay</button>
+                                <button class="btn btn-sm btn-info">Güncelle</button>
+                                @{
+                                    if (user.IsActive == true)
+                                    {
+                                        <button class="btn btn-sm btn-danger" id="doActiveOrPassive" data-id="@user.Id">Pasif Yap</button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-sm btn-primary" id="doActiveOrPassive" data-id="@user.Id">Aktif Yap</button>
+                                    }
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/AdminPages/js/dataTableTurkish.js" type="text/ecmascript"></script>
+    <script src="~/AdminPages/js/userIndex.js" type="text/ecmascript"></script>
+}

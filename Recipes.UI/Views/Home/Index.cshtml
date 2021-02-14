@@ -1,0 +1,38 @@
+﻿<main role="main">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1>Yemek Tarifleri</h1>
+            <p class="lead text-muted">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dignissim dapibus dolor a suscipit. Curabitur.
+            </p>
+            <p>
+                <a asp-area="Admin" asp-controller="Auth" asp-action="Login" class="btn btn-outline-danger btn-lg">Giriş Yap</a>
+                <a href="#" class="btn btn-outline-success btn-lg">Üye Ol</a>
+            </p>
+        </div>
+    </section>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                @for (int i = 0; i < 12; i++)
+                {
+                    <div class="col-md-4" id="test">
+                        <div class="card mb-4 shadow-sm">
+                            <img src="~/Pictures/recipesImgs/default.jpg" class="img-thumbnail" />
+                            <div class="card-body">
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    </div>
+                                    <small class="text-muted">9 mins</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,28 @@
+﻿.table-image {
+    border-radius: 5px;
+    max-height: 75px;
+    max-width: 75px;
+    border: 2px solid #d3d3d3;
+}
+
+.image-login-user {
+    border-radius: 5px;
+    max-height: 50px;
+    max-width: 50px;
+    border: 2px solid #d3d3d3;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}

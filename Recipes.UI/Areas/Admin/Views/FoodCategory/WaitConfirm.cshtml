@@ -1,0 +1,46 @@
+﻿@model FoodCategoryIndexViewModel
+@{ ViewBag.Title = "Onay Bekleyen Kategoriler"; }
+
+<ol class="breadcrumb mb-3 mt-2">
+    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Panel</a></li>
+    <li class="breadcrumb-item active">Onay Bekleyen Kategoriler</li>
+</ol>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table" id="homeDataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Kategori Adı</th>
+                        <th>Ekleyen Kullanıcı</th>
+                        <th>Kategori Fotoğrafı</th>
+                        <th>Kategori Açıklaması</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var category in Model.FoodCategories)
+                    {
+                        <tr>
+                            <th>@category.Id</th>
+                            <td>@category.CategoryName</td>
+                            <td>@category.User.UserName</td>
+                            <td><img src="~/Pictures/foodCategoryImgs/@category.CategoryPicture" class="table-image" /></td>
+                            <td>@category.CategoryDescription</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-success">Onayla</button>
+                                <button class="btn btn-sm btn-outline-dark">Onaylama</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/AdminPages/js/dataTableTurkish.js" type="text/ecmascript"></script>
+}

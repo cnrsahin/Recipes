@@ -1,0 +1,84 @@
+﻿@model HomeIndexViewModel
+@{ ViewBag.Title = "Yemek Tarifleri Admin Panel"; }
+
+<ol class="breadcrumb mb-3 mt-2">
+    <li class="breadcrumb-item active">Panel</li>
+</ol>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <div class="mb-2">
+            Onay Bekleyenler
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-xl-4 col-md-6">
+                <div class="card bg-dark text-white mb-4">
+                    <div class="card-body">Kategoriler (@Model.WaitConfirmFoodCategoryCount.ToString())</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" asp-controller="FoodCategory" asp-action="WaitConfirm">Detaylar</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <div class="card bg-success text-white mb-4">
+                    <div class="card-body">Tarifler (@Model.WaitConfirmRecipeCount.ToString())</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" asp-controller="Recipe" asp-action="WaitConfirm">Detaylar</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-body">Yorumlar (@Model.WaitConfirmCommentCount.ToString())</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" asp-controller="Comment" asp-action="WaitConfirm">Detaylar</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <div class="mb-2">
+            Onaylanmayanlar
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-xl-4 col-md-6">
+                <div class="card bg-danger text-white mb-4">
+                    <div class="card-body">Kategoriler (@Model.NotConfirmedAndDeletedFoodCategoryCount.ToString())</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" asp-controller="FoodCategory" asp-action="NotConfirmed">Detaylar</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <div class="card bg-danger text-white mb-4">
+                    <div class="card-body">Tarifler (@Model.NotConfirmedAndDeletedRecipeCount.ToString())</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" asp-controller="Recipe" asp-action="NotConfirmed">Detaylar</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <div class="card bg-danger text-white mb-4">
+                    <div class="card-body">Yorumlar (@Model.NotConfirmedAndDeletedCommentCount.ToString())</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" asp-controller="Comment" asp-action="NotConfirmed">Detaylar</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

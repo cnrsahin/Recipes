@@ -1,0 +1,24 @@
+﻿@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Yetkisiz İstek!</title>
+    <link href="~/AdminPages/css/styles.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="mt-4">
+        <div class="mb-2 text-center">
+            <h2 class="text-danger">Bu sayfa için yetkiniz bulunmamaktadır!</h2>
+            <a class="btn btn-lg btn-success" asp-controller="Home" asp-action="Index">Panele Dön</a>
+        </div>
+    </div>
+</body>
+</html>

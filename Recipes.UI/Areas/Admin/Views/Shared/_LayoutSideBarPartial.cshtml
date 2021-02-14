@@ -1,0 +1,40 @@
+﻿<nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
+    <div class="sb-sidenav-menu">
+        <div class="nav">
+            <div class="sb-sidenav-menu-heading">Ana Menü</div>
+            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                <div class="sb-nav-link-icon"><i class="fas fa-drumstick-bite"></i></div>
+                Panel
+            </a>
+            <div class="sb-sidenav-menu-heading">İçerik Menüsü</div>
+            <a class="nav-link" asp-controller="Recipe" asp-action="Index">
+                <div class="sb-nav-link-icon"><i class="fas fa-apple-alt"></i></div>
+                Tarifler
+            </a>
+            <a class="nav-link" asp-controller="FoodCategory" asp-action="Index">
+                <div class="sb-nav-link-icon"><i class="fas fa-utensils"></i></div>
+                Kategoriler
+            </a>
+            <a class="nav-link" asp-controller="Comment" asp-action="Index">
+                <div class="sb-nav-link-icon"><i class="fas fa-carrot"></i></div>
+                Yorumlar
+            </a>
+            @*@if (Model.Roles.Any(r => r.Equals("Admin")))
+                {
+                }*@
+            <div class="sb-sidenav-menu-heading">Yönetim Menüsü</div>
+            <a class="nav-link" asp-controller="User" asp-action="Index">
+                <div class="sb-nav-link-icon"><i class="fas fa-seedling"></i></div>
+                Kullanıcılar
+            </a>
+            <a class="nav-link" asp-controller="Role" asp-action="Index">
+                <div class="sb-nav-link-icon"><i class="fas fa-eye-slash"></i></div>
+                Roller
+            </a>
+        </div>
+    </div>
+    <div class="sb-sidenav-footer">
+        <div class="small">Giriş Yapan:</div>
+        Admin
+    </div>
+</nav>

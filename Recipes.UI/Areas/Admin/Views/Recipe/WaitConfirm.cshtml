@@ -1,0 +1,49 @@
+﻿@model RecipeIndexViewModel
+@{ ViewBag.Title = "Onay Bekleyen Tarifler"; }
+
+<ol class="breadcrumb mb-3 mt-2">
+    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Panel</a></li>
+    <li class="breadcrumb-item active">Onay Bekleyen Tarifler</li>
+</ol>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table" id="homeDataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Tarif Adı</th>
+                        <th>Ekleyen</th>
+                        <th>Kategorisi</th>
+                        <th>Tarif Fotoğrafı</th>
+                        <th>Tarif Başlığı</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var recipe in Model.Recipes)
+                    {
+                        <tr>
+                            <th>@recipe.Id</th>
+                            <td>@recipe.FoodName</td>
+                            <td>@recipe.User.UserName</td>
+                            <td>@recipe.FoodCategory.CategoryName</td>
+                            <td><img src="~/Pictures/recipesImgs/@recipe.FoodPicture" class="table-image" /></td>
+                            <td>@recipe.FoodTitle</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-warning">Detay</button>
+                                <button class="btn btn-sm btn-outline-success">Onayla</button>
+                                <button class="btn btn-sm btn-outline-dark">Onaylama</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/AdminPages/js/dataTableTurkish.js" type="text/ecmascript"></script>
+}
