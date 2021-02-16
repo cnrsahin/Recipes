@@ -15,7 +15,6 @@ namespace Recipes.UI.Areas.Admin.ViewComponents
         private readonly IRecipeRepository _recipeRepository;
         private readonly IFoodCategoryRepository _foodCategoryRepository;
         private readonly ICommentRepository _commentRepository;
-
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
 

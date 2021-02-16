@@ -28,15 +28,13 @@ namespace Recipes.UI.Areas.Admin.Controllers
             var comments = await _commentRepository.GetAllAsync(c => !c.IsDeleted && c.IsConfirmed, c => c.Recipe, c=>  c.User);
 
             if (comments == null) return NotFound();
-            else
-            {
-                var model = new CommentIndexViewModel
-                {
-                    Comments = comments
-                };
 
-                return View(model);
-            }
+            var model = new CommentIndexViewModel
+            {
+                Comments = comments
+            };
+
+            return View(model);
         }
 
         [Authorize(Roles = "Admin, Editor")]
@@ -46,15 +44,13 @@ namespace Recipes.UI.Areas.Admin.Controllers
             var comments = await _commentRepository.GetAllAsync(c => c.IsDeleted && c.IsConfirmed, c => c.Recipe, c=> c.User);
 
             if (comments == null) return NotFound();
-            else
-            {
-                var model = new CommentIndexViewModel
-                {
-                    Comments = comments
-                };
 
-                return View(model);
-            }
+            var model = new CommentIndexViewModel
+            {
+                Comments = comments
+            };
+
+            return View(model);
         }
 
         [Authorize(Roles = "Admin")]
@@ -78,15 +74,13 @@ namespace Recipes.UI.Areas.Admin.Controllers
             var comments = await _commentRepository.GetAllAsync(c => !c.IsDeleted && !c.IsConfirmed, c => c.Recipe, c => c.User);
 
             if (comments == null) return NotFound();
-            else
-            {
-                var model = new CommentIndexViewModel
-                {
-                    Comments = comments
-                };
 
-                return View(model);
-            }
+            var model = new CommentIndexViewModel
+            {
+                Comments = comments
+            };
+
+            return View(model);
         }
 
         [Authorize(Roles = "Admin, Editor")]
@@ -96,15 +90,13 @@ namespace Recipes.UI.Areas.Admin.Controllers
             var comments = await _commentRepository.GetAllAsync(c => c.IsDeleted && !c.IsConfirmed, c => c.Recipe, c => c.User);
 
             if (comments == null) return NotFound();
-            else
-            {
-                var model = new CommentIndexViewModel
-                {
-                    Comments = comments
-                };
 
-                return View(model);
-            }
+            var model = new CommentIndexViewModel
+            {
+                Comments = comments
+            };
+
+            return View(model);
         }
     }
 }

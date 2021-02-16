@@ -27,17 +27,14 @@ namespace Recipes.UI.Areas.Admin.Controllers
         {
             var roles = await _roleManager.Roles.ToListAsync();
 
-            if (roles == null)
-                return NotFound();
-            else
+            if (roles == null) return NotFound();
+           
+            var model = new RoleIndexViewModel
             {
-                var model = new RoleIndexViewModel
-                {
-                    Roles = roles
-                };
+                Roles = roles
+            };
 
-                return View(model);
-            }
+            return View(model);
         }
     }
 }

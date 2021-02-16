@@ -35,17 +35,14 @@ namespace Recipes.UI.Areas.Admin.Controllers
         {
             var users = await _userManager.Users.ToListAsync();
 
-            if (users == null)
-                return NotFound();
-            else
-            {
-                var model = new UserIndexViewModel
-                {
-                    Users = users
-                };
+            if (users == null) return NotFound();
 
-                return View(model);
-            }
+            var model = new UserIndexViewModel
+            {
+                Users = users
+            };
+
+            return View(model);
         }
 
         [Authorize(Roles = "Admin")]

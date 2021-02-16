@@ -28,15 +28,13 @@ namespace Recipes.UI.Areas.Admin.Controllers
             var categories = await _foodCategoryRepository.GetAllAsync(c => !c.IsDeleted && c.IsConfirmed, c => c.User);
 
             if (categories == null) return NotFound();
-            else
-            {
-                var model = new FoodCategoryIndexViewModel
-                {
-                    FoodCategories = categories
-                };
 
-                return View(model);
-            }
+            var model = new FoodCategoryIndexViewModel
+            {
+                FoodCategories = categories
+            };
+
+            return View(model);
         }
 
         [Authorize(Roles = "Admin, Editor")]
@@ -46,15 +44,13 @@ namespace Recipes.UI.Areas.Admin.Controllers
             var categories = await _foodCategoryRepository.GetAllAsync(c => c.IsDeleted && c.IsConfirmed, c => c.User);
 
             if (categories == null) return NotFound();
-            else
-            {
-                var model = new FoodCategoryIndexViewModel
-                {
-                    FoodCategories = categories
-                };
 
-                return View(model);
-            }
+            var model = new FoodCategoryIndexViewModel
+            {
+                FoodCategories = categories
+            };
+
+            return View(model);
         }
 
         [Authorize(Roles = "Admin")]
@@ -78,15 +74,13 @@ namespace Recipes.UI.Areas.Admin.Controllers
             var categories = await _foodCategoryRepository.GetAllAsync(c => !c.IsDeleted && !c.IsConfirmed, c => c.User);
 
             if (categories == null) return NotFound();
-            else
-            {
-                var model = new FoodCategoryIndexViewModel
-                {
-                    FoodCategories = categories
-                };
 
-                return View(model);
-            }
+            var model = new FoodCategoryIndexViewModel
+            {
+                FoodCategories = categories
+            };
+
+            return View(model);
         }
 
         [Authorize(Roles = "Admin, Editor")]
@@ -96,15 +90,13 @@ namespace Recipes.UI.Areas.Admin.Controllers
             var categories = await _foodCategoryRepository.GetAllAsync(c => c.IsDeleted && !c.IsConfirmed, c => c.User);
 
             if (categories == null) return NotFound();
-            else
-            {
-                var model = new FoodCategoryIndexViewModel
-                {
-                    FoodCategories = categories
-                };
 
-                return View(model);
-            }
+            var model = new FoodCategoryIndexViewModel
+            {
+                FoodCategories = categories
+            };
+
+            return View(model);
         }
     }
 }
