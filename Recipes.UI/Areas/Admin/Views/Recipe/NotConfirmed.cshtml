@@ -16,8 +16,8 @@
                         <th>Tarif Adı</th>
                         <th>Ekleyen</th>
                         <th>Kategorisi</th>
-                        <th>Tarif Fotoğrafı</th>
-                        <th>Onaylanmama Nedeni</th>
+                        <th>Fotoğrafı</th>
+                        <th>Red Nedeni</th>
                         <th>İşlemler</th>
                     </tr>
                 </thead>
@@ -27,8 +27,8 @@
                         <tr>
                             <th>@recipe.Id</th>
                             <td>@recipe.FoodName</td>
-                            <td>@recipe.User.UserName</td>
-                            <td>@recipe.FoodCategory.CategoryName</td>
+                            <td>@recipe.UserName</td>
+                            <td>@recipe.FoodCategoryName</td>
                             <td><img src="~/Pictures/recipesImgs/@recipe.FoodPicture" class="table-image" /></td>
                             <td>@recipe.WhyNotConfirmed</td>
                             <td>

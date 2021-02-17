@@ -18,7 +18,8 @@ namespace Recipes.UI.Areas.Admin.ViewComponents
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
 
-        public MenuViewComponent(UserManager<User> userManager, IRecipeRepository recipeRepository, IFoodCategoryRepository foodCategoryRepository, ICommentRepository commentRepository, RoleManager<Role> roleManager)
+        public MenuViewComponent(UserManager<User> userManager, IRecipeRepository recipeRepository, 
+            IFoodCategoryRepository foodCategoryRepository, ICommentRepository commentRepository, RoleManager<Role> roleManager)
         {
             _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
             _recipeRepository = recipeRepository ?? throw new ArgumentNullException(nameof(recipeRepository));

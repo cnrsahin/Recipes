@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Recipes.Service.Core.Abstract;
 using Recipes.Service.Core.Concrete.Entities;
 using Recipes.UI.Areas.Admin.Models;
+using Recipes.UI.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +17,12 @@ namespace Recipes.UI.Areas.Admin.Controllers
     public class FoodCategoryController : Controller
     {
         private readonly IFoodCategoryRepository _foodCategoryRepository;
+        private readonly IMapper _mapper;
 
-        public FoodCategoryController(IFoodCategoryRepository foodCategoryRepository)
+        public FoodCategoryController(IFoodCategoryRepository foodCategoryRepository, IMapper mapper)
         {
             _foodCategoryRepository = foodCategoryRepository ?? throw new ArgumentNullException(nameof(foodCategoryRepository));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         [Authorize(Roles = "Admin, Editor")]
@@ -26,12 +30,20 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var categories = await _foodCategoryRepository.GetAllAsync(c => !c.IsDeleted && c.IsConfirmed, c => c.User);
+            if (categories == null) 
+                return NotFound();
 
-            if (categories == null) return NotFound();
+            var dto = _mapper.Map<IEnumerable<FoodCategoryIndexDto>>(categories);
+
+            foreach (var item in dto)
+            {
+                var categorySelected = categories.FirstOrDefault(x => x.Id == item.Id);
+                item.UserName = categorySelected.User.UserName;
+            }
 
             var model = new FoodCategoryIndexViewModel
             {
-                FoodCategories = categories
+                FoodCategories = dto
             };
 
             return View(model);
@@ -42,12 +54,20 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> GetRemoved()
         {
             var categories = await _foodCategoryRepository.GetAllAsync(c => c.IsDeleted && c.IsConfirmed, c => c.User);
+            if (categories == null) 
+                return NotFound();
 
-            if (categories == null) return NotFound();
+            var dto = _mapper.Map<IEnumerable<FoodCategoryIndexDto>>(categories);
+
+            foreach (var item in dto)
+            {
+                var categorySelected = categories.FirstOrDefault(x => x.Id == item.Id);
+                item.UserName = categorySelected.User.UserName;
+            }
 
             var model = new FoodCategoryIndexViewModel
             {
-                FoodCategories = categories
+                FoodCategories = dto
             };
 
             return View(model);
@@ -72,12 +92,20 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> WaitConfirm()
         {
             var categories = await _foodCategoryRepository.GetAllAsync(c => !c.IsDeleted && !c.IsConfirmed, c => c.User);
+            if (categories == null) 
+                return NotFound();
 
-            if (categories == null) return NotFound();
+            var dto = _mapper.Map<IEnumerable<FoodCategoryIndexDto>>(categories);
+
+            foreach (var item in dto)
+            {
+                var categorySelected = categories.FirstOrDefault(x => x.Id == item.Id);
+                item.UserName = categorySelected.User.UserName;
+            }
 
             var model = new FoodCategoryIndexViewModel
             {
-                FoodCategories = categories
+                FoodCategories = dto
             };
 
             return View(model);
@@ -88,12 +116,20 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> NotConfirmed()
         {
             var categories = await _foodCategoryRepository.GetAllAsync(c => c.IsDeleted && !c.IsConfirmed, c => c.User);
+            if (categories == null) 
+                return NotFound();
 
-            if (categories == null) return NotFound();
+            var dto = _mapper.Map<IEnumerable<FoodCategoryIndexDto>>(categories);
+
+            foreach (var item in dto)
+            {
+                var categorySelected = categories.FirstOrDefault(x => x.Id == item.Id);
+                item.UserName = categorySelected.User.UserName;
+            }
 
             var model = new FoodCategoryIndexViewModel
             {
-                FoodCategories = categories
+                FoodCategories = dto
             };
 
             return View(model);

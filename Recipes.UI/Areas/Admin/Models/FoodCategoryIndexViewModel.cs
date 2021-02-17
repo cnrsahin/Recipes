@@ -1,4 +1,4 @@
-﻿using Recipes.Service.Core.Concrete.Entities;
+﻿using Recipes.UI.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +8,6 @@ namespace Recipes.UI.Areas.Admin.Models
 {
     public class FoodCategoryIndexViewModel
     {
-        public IEnumerable<FoodCategory> FoodCategories { get; set; }
+        public IEnumerable<FoodCategoryIndexDto> FoodCategories { get; set; }
     }
 }

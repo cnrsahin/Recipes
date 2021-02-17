@@ -14,10 +14,10 @@
                     <tr>
                         <th>#</th>
                         <th>Adı Soyadı</th>
-                        <th>Ekleyen Kullanıcı</th>
+                        <th>Ekleyen</th>
                         <th>Yorum</th>
-                        <th>Yorum Yapılan Tarif</th>
-                        <th>Onaylanmama Nedeni</th>
+                        <th>Tarif</th>
+                        <th>Red Nedeni</th>
                         <th>İşlemler</th>
                     </tr>
                 </thead>
@@ -27,9 +27,9 @@
                     <tr>
                         <th>@comment.Id</th>
                         <td>@comment.Fullname</td>
-                        <td>@comment.User.UserName</td>
+                        <td>@comment.UserName</td>
                         <td>@comment.CommentText</td>
-                        <td>@comment.Recipe.FoodName</td>
+                        <td>@comment.RecipeName</td>
                         <td>@comment.WhyNotConfirmed</td>
                         <td>
                             <button class="btn btn-sm btn-outline-warning">Detay</button>

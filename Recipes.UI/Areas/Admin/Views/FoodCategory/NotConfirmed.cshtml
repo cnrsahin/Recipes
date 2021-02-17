@@ -13,10 +13,10 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Kategori Adı</th>
-                        <th>Ekleyen Kullanıcı</th>
-                        <th>Kategori Fotoğrafı</th>
-                        <th>Onaylanmama Nedeni</th>
+                        <th>Kategori</th>
+                        <th>Ekleyen</th>
+                        <th>Fotoğrafı</th>
+                        <th>Red Nedeni</th>
                         <th>İşlemler</th>
                     </tr>
                 </thead>
@@ -26,7 +26,7 @@
                         <tr>
                             <th>@category.Id</th>
                             <td>@category.CategoryName</td>
-                            <td>@category.User.UserName</td>
+                            <td>@category.UserName</td>
                             <td><img src="~/Pictures/foodCategoryImgs/@category.CategoryPicture" class="table-image" /></td>
                             <td>@category.WhyNotConfirmed</td>
                             <td>

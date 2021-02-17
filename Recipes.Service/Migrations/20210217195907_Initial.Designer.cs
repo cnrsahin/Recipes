@@ -10,23 +10,25 @@ using Recipes.Service.Data.Contexts;
 namespace Recipes.Service.Migrations
 {
     [DbContext(typeof(RecipeContext))]
-    [Migration("20210207191907_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210217195907_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.2");
+                .HasAnnotation("ProductVersion", "5.0.3")
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Recipes.Service.Core.Concrete.Entities.Comment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CommentText")
                         .IsRequired()
@@ -75,7 +77,7 @@ namespace Recipes.Service.Migrations
                         {
                             Id = 1,
                             CommentText = "Tatlı çok güzel olmuş.",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 126, DateTimeKind.Local).AddTicks(194),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 266, DateTimeKind.Local).AddTicks(3142),
                             EmailAddress = "cnrshn@gmail.com",
                             Fullname = "Caner Sahin",
                             IsConfirmed = true,
@@ -87,7 +89,7 @@ namespace Recipes.Service.Migrations
                         {
                             Id = 2,
                             CommentText = "Güzel bir börek olmuş",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 126, DateTimeKind.Local).AddTicks(3407),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 266, DateTimeKind.Local).AddTicks(6137),
                             EmailAddress = "cnrshn@gmail.com",
                             Fullname = "Caner Sahin",
                             IsConfirmed = true,
@@ -99,7 +101,7 @@ namespace Recipes.Service.Migrations
                         {
                             Id = 3,
                             CommentText = "Tatlıya bayıldım...",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 126, DateTimeKind.Local).AddTicks(3454),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 266, DateTimeKind.Local).AddTicks(6179),
                             EmailAddress = "cnrshn@gmail.com",
                             Fullname = "Caner Sahin",
                             IsConfirmed = true,
@@ -111,7 +113,7 @@ namespace Recipes.Service.Migrations
                         {
                             Id = 4,
                             CommentText = "Tatlıya bayıldım...",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 126, DateTimeKind.Local).AddTicks(3458),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 266, DateTimeKind.Local).AddTicks(6183),
                             EmailAddress = "cnrshn@gmail.com",
                             Fullname = "Caner Sahin",
                             IsConfirmed = true,
@@ -123,7 +125,7 @@ namespace Recipes.Service.Migrations
                         {
                             Id = 5,
                             CommentText = "Tatlıya bayıldım...",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 126, DateTimeKind.Local).AddTicks(3462),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 266, DateTimeKind.Local).AddTicks(6187),
                             EmailAddress = "cnrshn@gmail.com",
                             Fullname = "Caner Sahin",
                             IsConfirmed = true,
@@ -135,7 +137,7 @@ namespace Recipes.Service.Migrations
                         {
                             Id = 6,
                             CommentText = "Tatlıya bayıldım...",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 126, DateTimeKind.Local).AddTicks(3467),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 266, DateTimeKind.Local).AddTicks(6191),
                             EmailAddress = "cnrshn@gmail.com",
                             Fullname = "Caner Sahin",
                             IsConfirmed = true,
@@ -147,7 +149,7 @@ namespace Recipes.Service.Migrations
                         {
                             Id = 7,
                             CommentText = "Tatlıya bayıldım...",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 126, DateTimeKind.Local).AddTicks(3472),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 266, DateTimeKind.Local).AddTicks(6194),
                             EmailAddress = "cnrshn@gmail.com",
                             Fullname = "Caner Sahin",
                             IsConfirmed = true,
@@ -159,7 +161,7 @@ namespace Recipes.Service.Migrations
                         {
                             Id = 8,
                             CommentText = "Tatlıya bayıldım...",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 126, DateTimeKind.Local).AddTicks(3476),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 266, DateTimeKind.Local).AddTicks(6198),
                             EmailAddress = "cnrshn@gmail.com",
                             Fullname = "Caner Sahin",
                             IsConfirmed = true,
@@ -174,7 +176,9 @@ namespace Recipes.Service.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CategoryDescription")
                         .IsRequired()
@@ -220,7 +224,7 @@ namespace Recipes.Service.Migrations
                             CategoryDescription = "Tatlı Kategorisi",
                             CategoryName = "Tatlılar",
                             CategoryPicture = "default.jpg",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 106, DateTimeKind.Local).AddTicks(7722),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(2926),
                             IsConfirmed = true,
                             IsDeleted = false,
                             UserId = 1
@@ -231,7 +235,7 @@ namespace Recipes.Service.Migrations
                             CategoryDescription = "Börek Kategorisi",
                             CategoryName = "Börekler",
                             CategoryPicture = "default.jpg",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1004),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5891),
                             IsConfirmed = true,
                             IsDeleted = false,
                             UserId = 1
@@ -242,7 +246,7 @@ namespace Recipes.Service.Migrations
                             CategoryDescription = "Çorba Kategorisi",
                             CategoryName = "Çorbalar",
                             CategoryPicture = "default.jpg",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1062),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5944),
                             IsConfirmed = true,
                             IsDeleted = false,
                             UserId = 1
@@ -253,7 +257,7 @@ namespace Recipes.Service.Migrations
                             CategoryDescription = "Kek Kategorisi",
                             CategoryName = "Kekler",
                             CategoryPicture = "default.jpg",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1068),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5950),
                             IsConfirmed = true,
                             IsDeleted = false,
                             UserId = 1
@@ -264,7 +268,7 @@ namespace Recipes.Service.Migrations
                             CategoryDescription = "Makarna Kategorisi",
                             CategoryName = "Makarnalar",
                             CategoryPicture = "default.jpg",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1075),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5955),
                             IsConfirmed = true,
                             IsDeleted = false,
                             UserId = 1
@@ -275,7 +279,7 @@ namespace Recipes.Service.Migrations
                             CategoryDescription = "Pasta Kategorisi",
                             CategoryName = "Pastalar",
                             CategoryPicture = "default.jpg",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1081),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5959),
                             IsConfirmed = true,
                             IsDeleted = false,
                             UserId = 2
@@ -286,7 +290,7 @@ namespace Recipes.Service.Migrations
                             CategoryDescription = "Kahvaltı Kategorisi",
                             CategoryName = "Kahvaltılıklar",
                             CategoryPicture = "default.jpg",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1086),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5965),
                             IsConfirmed = true,
                             IsDeleted = false,
                             UserId = 2
@@ -297,7 +301,7 @@ namespace Recipes.Service.Migrations
                             CategoryDescription = "Kurabiye Kategorisi",
                             CategoryName = "Kurabiyeler",
                             CategoryPicture = "default.jpg",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1091),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5971),
                             IsConfirmed = true,
                             IsDeleted = false,
                             UserId = 2
@@ -308,7 +312,7 @@ namespace Recipes.Service.Migrations
                             CategoryDescription = "Salata Kategorisi",
                             CategoryName = "Salatalar",
                             CategoryPicture = "default.jpg",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1096),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5975),
                             IsConfirmed = true,
                             IsDeleted = false,
                             UserId = 2
@@ -319,7 +323,7 @@ namespace Recipes.Service.Migrations
                             CategoryDescription = "Sulu Yemek Kategorisi",
                             CategoryName = "Sulu Yemekler",
                             CategoryPicture = "default.jpg",
-                            CreateDate = new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1101),
+                            CreateDate = new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5980),
                             IsConfirmed = true,
                             IsDeleted = false,
                             UserId = 2
@@ -331,7 +335,9 @@ namespace Recipes.Service.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CommentCount")
                         .HasColumnType("int");
@@ -421,7 +427,7 @@ namespace Recipes.Service.Migrations
                             Id = 1,
                             CommentCount = 0,
                             CookingTime = new TimeSpan(0, 0, 15, 0, 0),
-                            CreateTime = new DateTime(2021, 2, 7, 22, 19, 6, 119, DateTimeKind.Local).AddTicks(6111),
+                            CreateTime = new DateTime(2021, 2, 17, 22, 59, 6, 260, DateTimeKind.Local).AddTicks(4530),
                             FoodCategoryId = 1,
                             FoodName = "Kadayif Tatlısı",
                             FoodPicture = "default.jpg",
@@ -443,7 +449,7 @@ namespace Recipes.Service.Migrations
                             Id = 2,
                             CommentCount = 0,
                             CookingTime = new TimeSpan(0, 0, 15, 0, 0),
-                            CreateTime = new DateTime(2021, 2, 7, 22, 19, 6, 120, DateTimeKind.Local).AddTicks(3707),
+                            CreateTime = new DateTime(2021, 2, 17, 22, 59, 6, 261, DateTimeKind.Local).AddTicks(1536),
                             FoodCategoryId = 2,
                             FoodName = "Avcı Böreği",
                             FoodPicture = "default.jpg",
@@ -465,7 +471,7 @@ namespace Recipes.Service.Migrations
                             Id = 3,
                             CommentCount = 0,
                             CookingTime = new TimeSpan(0, 0, 15, 0, 0),
-                            CreateTime = new DateTime(2021, 2, 7, 22, 19, 6, 120, DateTimeKind.Local).AddTicks(3810),
+                            CreateTime = new DateTime(2021, 2, 17, 22, 59, 6, 261, DateTimeKind.Local).AddTicks(1626),
                             FoodCategoryId = 3,
                             FoodName = "Ispanak Yemeği",
                             FoodPicture = "default.jpg",
@@ -487,7 +493,7 @@ namespace Recipes.Service.Migrations
                             Id = 4,
                             CommentCount = 0,
                             CookingTime = new TimeSpan(0, 0, 15, 0, 0),
-                            CreateTime = new DateTime(2021, 2, 7, 22, 19, 6, 120, DateTimeKind.Local).AddTicks(3819),
+                            CreateTime = new DateTime(2021, 2, 17, 22, 59, 6, 261, DateTimeKind.Local).AddTicks(1633),
                             FoodCategoryId = 4,
                             FoodName = "Domates Yemeği",
                             FoodPicture = "default.jpg",
@@ -509,7 +515,7 @@ namespace Recipes.Service.Migrations
                             Id = 5,
                             CommentCount = 0,
                             CookingTime = new TimeSpan(0, 0, 15, 0, 0),
-                            CreateTime = new DateTime(2021, 2, 7, 22, 19, 6, 120, DateTimeKind.Local).AddTicks(3827),
+                            CreateTime = new DateTime(2021, 2, 17, 22, 59, 6, 261, DateTimeKind.Local).AddTicks(1640),
                             FoodCategoryId = 5,
                             FoodName = "Patates Yemeği",
                             FoodPicture = "default.jpg",
@@ -531,7 +537,7 @@ namespace Recipes.Service.Migrations
                             Id = 6,
                             CommentCount = 0,
                             CookingTime = new TimeSpan(0, 0, 15, 0, 0),
-                            CreateTime = new DateTime(2021, 2, 7, 22, 19, 6, 120, DateTimeKind.Local).AddTicks(3834),
+                            CreateTime = new DateTime(2021, 2, 17, 22, 59, 6, 261, DateTimeKind.Local).AddTicks(1647),
                             FoodCategoryId = 6,
                             FoodName = "Soğan Yemeği",
                             FoodPicture = "default.jpg",
@@ -553,7 +559,7 @@ namespace Recipes.Service.Migrations
                             Id = 7,
                             CommentCount = 0,
                             CookingTime = new TimeSpan(0, 0, 15, 0, 0),
-                            CreateTime = new DateTime(2021, 2, 7, 22, 19, 6, 120, DateTimeKind.Local).AddTicks(3906),
+                            CreateTime = new DateTime(2021, 2, 17, 22, 59, 6, 261, DateTimeKind.Local).AddTicks(1654),
                             FoodCategoryId = 7,
                             FoodName = "Böğürtlen Yemeği",
                             FoodPicture = "default.jpg",
@@ -575,7 +581,7 @@ namespace Recipes.Service.Migrations
                             Id = 8,
                             CommentCount = 0,
                             CookingTime = new TimeSpan(0, 0, 15, 0, 0),
-                            CreateTime = new DateTime(2021, 2, 7, 22, 19, 6, 120, DateTimeKind.Local).AddTicks(3914),
+                            CreateTime = new DateTime(2021, 2, 17, 22, 59, 6, 261, DateTimeKind.Local).AddTicks(1661),
                             FoodCategoryId = 8,
                             FoodName = "Peynir Yemeği",
                             FoodPicture = "default.jpg",
@@ -599,7 +605,7 @@ namespace Recipes.Service.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -631,7 +637,7 @@ namespace Recipes.Service.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "75f625e0-b3a9-44cb-9fcb-75c643378f15",
+                            ConcurrencyStamp = "9841f5cd-5fed-4fdf-b1a4-595d843b9946",
                             Name = "Admin",
                             NormalizedName = "ADMIN",
                             RoleDescription = "Tüm yetkilere sahip kullanıcıdır."
@@ -639,7 +645,7 @@ namespace Recipes.Service.Migrations
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "d4bb8776-a3bc-4061-8028-f8a2680a9028",
+                            ConcurrencyStamp = "b64572b7-d644-4bd7-a7dc-705c86ad3b1e",
                             Name = "Editor",
                             NormalizedName = "EDITOR",
                             RoleDescription = "Tarif ve kategori ekleyebilir fakat silemez, Kullanıcılar ve roller sayfalarını görüntüleyemez."
@@ -647,7 +653,7 @@ namespace Recipes.Service.Migrations
                         new
                         {
                             Id = 3,
-                            ConcurrencyStamp = "fd739c08-7b01-49af-9130-f0d57dadb43c",
+                            ConcurrencyStamp = "19d21d1d-6146-46c7-93a2-3904012acde9",
                             Name = "Member",
                             NormalizedName = "MEMBER",
                             RoleDescription = "Üye olan herkese atanır, tarif yazabilirler ve yorum bırakabilirler, admin veya editor tarafından onaylanması gerekir. Kullanıcılar, roller ve çöp kutusu sayfalarını görüntüleyemez."
@@ -659,7 +665,7 @@ namespace Recipes.Service.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -682,7 +688,7 @@ namespace Recipes.Service.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("About")
                         .HasMaxLength(500)
@@ -765,7 +771,7 @@ namespace Recipes.Service.Migrations
                             Id = 1,
                             About = "1 id'li kullanıcı",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4e41fe13-aa0b-433d-a2fd-1d19b26aa4d1",
+                            ConcurrencyStamp = "da3f7766-58ad-4cf4-b5ad-5fb2c9587425",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Caner Sahin",
@@ -773,11 +779,11 @@ namespace Recipes.Service.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPIcxm4TUjnYEZxOguG4YxNFNTsdcbuPA0ztxAc0bej9izCpBXHBbbRGDVUXpPmaYQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKnW1z4ZEpV6cYxZ+DDzdzvL2uyAaG04oC/ScdwY3bXAD1de3FHZOYW00pXzTzYCNw==",
                             PhoneNumber = "00905425612223",
                             PhoneNumberConfirmed = true,
                             Picture = "default.jpg",
-                            SecurityStamp = "4347190f-058e-4a9e-8ea9-79eb794fb294",
+                            SecurityStamp = "2ca1f5a7-2f68-4ece-ab28-615e42a1f568",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         },
@@ -786,7 +792,7 @@ namespace Recipes.Service.Migrations
                             Id = 2,
                             About = "2 id'li kullanıcı",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5894cb61-e054-404c-ae81-b642c332d169",
+                            ConcurrencyStamp = "044d0348-64b6-464c-88e9-fe501b9e434d",
                             Email = "editor@gmail.com",
                             EmailConfirmed = true,
                             Fullname = "Caner Sahin",
@@ -794,11 +800,11 @@ namespace Recipes.Service.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "EDITOR@GMAIL.COM",
                             NormalizedUserName = "EDITOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHrzAyyg0KALy5QGbcsQZTOIzj/ged0r7qnUkyzeOrgRgnsRWwGF0xK8wctDoLf9IA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOeq1ideNRnrA8ihZ1tVfSMeHb05s1UnxpO90yfvsk7/5Zgd0lXPnrKNzcNVUBBT5w==",
                             PhoneNumber = "00905425612223",
                             PhoneNumberConfirmed = true,
                             Picture = "default.jpg",
-                            SecurityStamp = "be6af09d-e703-4634-b53d-bbdd65563183",
+                            SecurityStamp = "b779571b-6bc5-476f-bdd3-ac87aee0f2bd",
                             TwoFactorEnabled = false,
                             UserName = "Editor"
                         });
@@ -809,7 +815,7 @@ namespace Recipes.Service.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");

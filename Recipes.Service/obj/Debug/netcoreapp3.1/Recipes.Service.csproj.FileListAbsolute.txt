@@ -15,7 +15,6 @@ C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\bin\Debug\netcoreapp3.1\
 C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\bin\Debug\netcoreapp3.1\Recipes.Service.runtimeconfig.dev.json
 C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\bin\Debug\netcoreapp3.1\Recipes.Service.dll
 C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\bin\Debug\netcoreapp3.1\Recipes.Service.pdb
-C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Recipes.Service.csprojAssemblyReference.cache
 C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Recipes.Service.AssemblyInfoInputs.cache
 C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Recipes.Service.AssemblyInfo.cs
 C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Recipes.Service.csproj.CoreCompileInputs.cache

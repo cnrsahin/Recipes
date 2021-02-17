@@ -11,6 +11,7 @@ using Recipes.Service.Core.Abstract;
 using Recipes.Service.Core.Concrete.Entities;
 using Recipes.Service.Data.Contexts;
 using Recipes.Service.Data.EntityFramework;
+using Recipes.UI.AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,9 @@ namespace Recipes.UI
         {
             services.AddControllersWithViews();
             services.AddSession();
+
+            services.AddAutoMapper(typeof(Profiles));
+
             services.AddDbContext<RecipeContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("LocalDb"))
             );

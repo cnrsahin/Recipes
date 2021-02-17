@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Recipes.Service.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -266,9 +266,9 @@ namespace Recipes.Service.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName", "RoleDescription" },
                 values: new object[,]
                 {
-                    { 1, "75f625e0-b3a9-44cb-9fcb-75c643378f15", "Admin", "ADMIN", "Tüm yetkilere sahip kullanıcıdır." },
-                    { 2, "d4bb8776-a3bc-4061-8028-f8a2680a9028", "Editor", "EDITOR", "Tarif ve kategori ekleyebilir fakat silemez, Kullanıcılar ve roller sayfalarını görüntüleyemez." },
-                    { 3, "fd739c08-7b01-49af-9130-f0d57dadb43c", "Member", "MEMBER", "Üye olan herkese atanır, tarif yazabilirler ve yorum bırakabilirler, admin veya editor tarafından onaylanması gerekir. Kullanıcılar, roller ve çöp kutusu sayfalarını görüntüleyemez." }
+                    { 1, "9841f5cd-5fed-4fdf-b1a4-595d843b9946", "Admin", "ADMIN", "Tüm yetkilere sahip kullanıcıdır." },
+                    { 2, "b64572b7-d644-4bd7-a7dc-705c86ad3b1e", "Editor", "EDITOR", "Tarif ve kategori ekleyebilir fakat silemez, Kullanıcılar ve roller sayfalarını görüntüleyemez." },
+                    { 3, "19d21d1d-6146-46c7-93a2-3904012acde9", "Member", "MEMBER", "Üye olan herkese atanır, tarif yazabilirler ve yorum bırakabilirler, admin veya editor tarafından onaylanması gerekir. Kullanıcılar, roller ve çöp kutusu sayfalarını görüntüleyemez." }
                 });
 
             migrationBuilder.InsertData(
@@ -276,8 +276,8 @@ namespace Recipes.Service.Migrations
                 columns: new[] { "Id", "About", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "Fullname", "IsActive", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Picture", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { 1, "1 id'li kullanıcı", 0, "4e41fe13-aa0b-433d-a2fd-1d19b26aa4d1", "admin@gmail.com", true, "Caner Sahin", true, false, null, "ADMIN@GMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAEPIcxm4TUjnYEZxOguG4YxNFNTsdcbuPA0ztxAc0bej9izCpBXHBbbRGDVUXpPmaYQ==", "00905425612223", true, "default.jpg", "4347190f-058e-4a9e-8ea9-79eb794fb294", false, "Admin" },
-                    { 2, "2 id'li kullanıcı", 0, "5894cb61-e054-404c-ae81-b642c332d169", "editor@gmail.com", true, "Caner Sahin", true, false, null, "EDITOR@GMAIL.COM", "EDITOR", "AQAAAAEAACcQAAAAEHrzAyyg0KALy5QGbcsQZTOIzj/ged0r7qnUkyzeOrgRgnsRWwGF0xK8wctDoLf9IA==", "00905425612223", true, "default.jpg", "be6af09d-e703-4634-b53d-bbdd65563183", false, "Editor" }
+                    { 1, "1 id'li kullanıcı", 0, "da3f7766-58ad-4cf4-b5ad-5fb2c9587425", "admin@gmail.com", true, "Caner Sahin", true, false, null, "ADMIN@GMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAEKnW1z4ZEpV6cYxZ+DDzdzvL2uyAaG04oC/ScdwY3bXAD1de3FHZOYW00pXzTzYCNw==", "00905425612223", true, "default.jpg", "2ca1f5a7-2f68-4ece-ab28-615e42a1f568", false, "Admin" },
+                    { 2, "2 id'li kullanıcı", 0, "044d0348-64b6-464c-88e9-fe501b9e434d", "editor@gmail.com", true, "Caner Sahin", true, false, null, "EDITOR@GMAIL.COM", "EDITOR", "AQAAAAEAACcQAAAAEOeq1ideNRnrA8ihZ1tVfSMeHb05s1UnxpO90yfvsk7/5Zgd0lXPnrKNzcNVUBBT5w==", "00905425612223", true, "default.jpg", "b779571b-6bc5-476f-bdd3-ac87aee0f2bd", false, "Editor" }
                 });
 
             migrationBuilder.InsertData(
@@ -294,16 +294,16 @@ namespace Recipes.Service.Migrations
                 columns: new[] { "Id", "CategoryDescription", "CategoryName", "CategoryPicture", "CreateDate", "IsConfirmed", "IsDeleted", "UserId", "WhyNotConfirmed" },
                 values: new object[,]
                 {
-                    { 1, "Tatlı Kategorisi", "Tatlılar", "default.jpg", new DateTime(2021, 2, 7, 22, 19, 6, 106, DateTimeKind.Local).AddTicks(7722), true, false, 1, null },
-                    { 2, "Börek Kategorisi", "Börekler", "default.jpg", new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1004), true, false, 1, null },
-                    { 3, "Çorba Kategorisi", "Çorbalar", "default.jpg", new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1062), true, false, 1, null },
-                    { 4, "Kek Kategorisi", "Kekler", "default.jpg", new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1068), true, false, 1, null },
-                    { 5, "Makarna Kategorisi", "Makarnalar", "default.jpg", new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1075), true, false, 1, null },
-                    { 6, "Pasta Kategorisi", "Pastalar", "default.jpg", new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1081), true, false, 2, null },
-                    { 7, "Kahvaltı Kategorisi", "Kahvaltılıklar", "default.jpg", new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1086), true, false, 2, null },
-                    { 8, "Kurabiye Kategorisi", "Kurabiyeler", "default.jpg", new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1091), true, false, 2, null },
-                    { 9, "Salata Kategorisi", "Salatalar", "default.jpg", new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1096), true, false, 2, null },
-                    { 10, "Sulu Yemek Kategorisi", "Sulu Yemekler", "default.jpg", new DateTime(2021, 2, 7, 22, 19, 6, 107, DateTimeKind.Local).AddTicks(1101), true, false, 2, null }
+                    { 1, "Tatlı Kategorisi", "Tatlılar", "default.jpg", new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(2926), true, false, 1, null },
+                    { 2, "Börek Kategorisi", "Börekler", "default.jpg", new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5891), true, false, 1, null },
+                    { 3, "Çorba Kategorisi", "Çorbalar", "default.jpg", new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5944), true, false, 1, null },
+                    { 4, "Kek Kategorisi", "Kekler", "default.jpg", new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5950), true, false, 1, null },
+                    { 5, "Makarna Kategorisi", "Makarnalar", "default.jpg", new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5955), true, false, 1, null },
+                    { 6, "Pasta Kategorisi", "Pastalar", "default.jpg", new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5959), true, false, 2, null },
+                    { 7, "Kahvaltı Kategorisi", "Kahvaltılıklar", "default.jpg", new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5965), true, false, 2, null },
+                    { 8, "Kurabiye Kategorisi", "Kurabiyeler", "default.jpg", new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5971), true, false, 2, null },
+                    { 9, "Salata Kategorisi", "Salatalar", "default.jpg", new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5975), true, false, 2, null },
+                    { 10, "Sulu Yemek Kategorisi", "Sulu Yemekler", "default.jpg", new DateTime(2021, 2, 17, 22, 59, 6, 248, DateTimeKind.Local).AddTicks(5980), true, false, 2, null }
                 });
 
             migrationBuilder.InsertData(
@@ -311,14 +311,14 @@ namespace Recipes.Service.Migrations
                 columns: new[] { "Id", "CommentCount", "CookingTime", "CreateTime", "FoodCategoryId", "FoodName", "FoodPicture", "FoodTitle", "IsConfirmed", "IsDeleted", "Material", "PersonSize", "PreparationTime", "RecipeDetail", "SeoAuthor", "SeoDescription", "SeoTags", "UserId", "ViewCount", "WhyNotConfirmed" },
                 values: new object[,]
                 {
-                    { 1, 0, new TimeSpan(0, 0, 15, 0, 0), new DateTime(2021, 2, 7, 22, 19, 6, 119, DateTimeKind.Local).AddTicks(6111), 1, "Kadayif Tatlısı", "default.jpg", "guzel tatli", true, false, "kadayıf tarifi malzemeler listesi, html text editor ile yazılacak.", 4, new TimeSpan(0, 0, 25, 0, 0), "15 dk pişir, soğut, servis et vs.", "Caner Sahin", "Kadayif tatlisi tarifi.", "birinci, yemek, tarifi", 1, 400, null },
-                    { 2, 0, new TimeSpan(0, 0, 15, 0, 0), new DateTime(2021, 2, 7, 22, 19, 6, 120, DateTimeKind.Local).AddTicks(3707), 2, "Avcı Böreği", "default.jpg", "Tatlı tarifinin kısa bir başlığı.", true, false, "avcı böreği tarifi malzemeler listesi, html text editor ile yazılacak.", 4, new TimeSpan(0, 0, 25, 0, 0), "15 dk pişir, soğut, servis et vs.", "Caner Sahin", "Avcı böreği tarifi.", "börek, avcı, tarif", 1, 299, null },
-                    { 3, 0, new TimeSpan(0, 0, 15, 0, 0), new DateTime(2021, 2, 7, 22, 19, 6, 120, DateTimeKind.Local).AddTicks(3810), 3, "Ispanak Yemeği", "default.jpg", "Tatlı tarifinin kısa bir başlığı.", true, false, "avcı böreği tarifi malzemeler listesi, html text editor ile yazılacak.", 4, new TimeSpan(0, 0, 25, 0, 0), "15 dk pişir, soğut, servis et vs.", "Caner Sahin", "Avcı böreği tarifi.", "börek, avcı, tarif", 2, 299, null },
-                    { 4, 0, new TimeSpan(0, 0, 15, 0, 0), new DateTime(2021, 2, 7, 22, 19, 6, 120, DateTimeKind.Local).AddTicks(3819), 4, "Domates Yemeği", "default.jpg", "Tatlı tarifinin kısa bir başlığı.", true, false, "avcı böreği tarifi malzemeler listesi, html text editor ile yazılacak.", 4, new TimeSpan(0, 0, 25, 0, 0), "15 dk pişir, soğut, servis et vs.", "Caner Sahin", "Avcı böreği tarifi.", "börek, avcı, tarif", 2, 299, null },
-                    { 5, 0, new TimeSpan(0, 0, 15, 0, 0), new DateTime(2021, 2, 7, 22, 19, 6, 120, DateTimeKind.Local).AddTicks(3827), 5, "Patates Yemeği", "default.jpg", "Tatlı tarifinin kısa bir başlığı.", true, false, "avcı böreği tarifi malzemeler listesi, html text editor ile yazılacak.", 4, new TimeSpan(0, 0, 25, 0, 0), "15 dk pişir, soğut, servis et vs.", "Caner Sahin", "Avcı böreği tarifi.", "börek, avcı, tarif", 1, 299, null },
-                    { 6, 0, new TimeSpan(0, 0, 15, 0, 0), new DateTime(2021, 2, 7, 22, 19, 6, 120, DateTimeKind.Local).AddTicks(3834), 6, "Soğan Yemeği", "default.jpg", "Tatlı tarifinin kısa bir başlığı.", true, false, "avcı böreği tarifi malzemeler listesi, html text editor ile yazılacak.", 4, new TimeSpan(0, 0, 25, 0, 0), "15 dk pişir, soğut, servis et vs.", "Caner Sahin", "Avcı böreği tarifi.", "börek, avcı, tarif", 1, 299, null },
-                    { 7, 0, new TimeSpan(0, 0, 15, 0, 0), new DateTime(2021, 2, 7, 22, 19, 6, 120, DateTimeKind.Local).AddTicks(3906), 7, "Böğürtlen Yemeği", "default.jpg", "Tatlı tarifinin kısa bir başlığı.", true, false, "avcı böreği tarifi malzemeler listesi, html text editor ile yazılacak.", 4, new TimeSpan(0, 0, 25, 0, 0), "15 dk pişir, soğut, servis et vs.", "Caner Sahin", "Avcı böreği tarifi.", "börek, avcı, tarif", 2, 299, null },
-                    { 8, 0, new TimeSpan(0, 0, 15, 0, 0), new DateTime(2021, 2, 7, 22, 19, 6, 120, DateTimeKind.Local).AddTicks(3914), 8, "Peynir Yemeği", "default.jpg", "Tatlı tarifinin kısa bir başlığı.", true, false, "avcı böreği tarifi malzemeler listesi, html text editor ile yazılacak.", 4, new TimeSpan(0, 0, 25, 0, 0), "15 dk pişir, soğut, servis et vs.", "Caner Sahin", "Avcı böreği tarifi.", "börek, avcı, tarif", 1, 299, null }
+                    { 1, 0, new TimeSpan(0, 0, 15, 0, 0), new DateTime(2021, 2, 17, 22, 59, 6, 260, DateTimeKind.Local).AddTicks(4530), 1, "Kadayif Tatlısı", "default.jpg", "guzel tatli", true, false, "kadayıf tarifi malzemeler listesi, html text editor ile yazılacak.", 4, new TimeSpan(0, 0, 25, 0, 0), "15 dk pişir, soğut, servis et vs.", "Caner Sahin", "Kadayif tatlisi tarifi.", "birinci, yemek, tarifi", 1, 400, null },
+                    { 2, 0, new TimeSpan(0, 0, 15, 0, 0), new DateTime(2021, 2, 17, 22, 59, 6, 261, DateTimeKind.Local).AddTicks(1536), 2, "Avcı Böreği", "default.jpg", "Tatlı tarifinin kısa bir başlığı.", true, false, "avcı böreği tarifi malzemeler listesi, html text editor ile yazılacak.", 4, new TimeSpan(0, 0, 25, 0, 0), "15 dk pişir, soğut, servis et vs.", "Caner Sahin", "Avcı böreği tarifi.", "börek, avcı, tarif", 1, 299, null },
+                    { 3, 0, new TimeSpan(0, 0, 15, 0, 0), new DateTime(2021, 2, 17, 22, 59, 6, 261, DateTimeKind.Local).AddTicks(1626), 3, "Ispanak Yemeği", "default.jpg", "Tatlı tarifinin kısa bir başlığı.", true, false, "avcı böreği tarifi malzemeler listesi, html text editor ile yazılacak.", 4, new TimeSpan(0, 0, 25, 0, 0), "15 dk pişir, soğut, servis et vs.", "Caner Sahin", "Avcı böreği tarifi.", "börek, avcı, tarif", 2, 299, null },
+                    { 4, 0, new TimeSpan(0, 0, 15, 0, 0), new DateTime(2021, 2, 17, 22, 59, 6, 261, DateTimeKind.Local).AddTicks(1633), 4, "Domates Yemeği", "default.jpg", "Tatlı tarifinin kısa bir başlığı.", true, false, "avcı böreği tarifi malzemeler listesi, html text editor ile yazılacak.", 4, new TimeSpan(0, 0, 25, 0, 0), "15 dk pişir, soğut, servis et vs.", "Caner Sahin", "Avcı böreği tarifi.", "börek, avcı, tarif", 2, 299, null },
+                    { 5, 0, new TimeSpan(0, 0, 15, 0, 0), new DateTime(2021, 2, 17, 22, 59, 6, 261, DateTimeKind.Local).AddTicks(1640), 5, "Patates Yemeği", "default.jpg", "Tatlı tarifinin kısa bir başlığı.", true, false, "avcı böreği tarifi malzemeler listesi, html text editor ile yazılacak.", 4, new TimeSpan(0, 0, 25, 0, 0), "15 dk pişir, soğut, servis et vs.", "Caner Sahin", "Avcı böreği tarifi.", "börek, avcı, tarif", 1, 299, null },
+                    { 6, 0, new TimeSpan(0, 0, 15, 0, 0), new DateTime(2021, 2, 17, 22, 59, 6, 261, DateTimeKind.Local).AddTicks(1647), 6, "Soğan Yemeği", "default.jpg", "Tatlı tarifinin kısa bir başlığı.", true, false, "avcı böreği tarifi malzemeler listesi, html text editor ile yazılacak.", 4, new TimeSpan(0, 0, 25, 0, 0), "15 dk pişir, soğut, servis et vs.", "Caner Sahin", "Avcı böreği tarifi.", "börek, avcı, tarif", 1, 299, null },
+                    { 7, 0, new TimeSpan(0, 0, 15, 0, 0), new DateTime(2021, 2, 17, 22, 59, 6, 261, DateTimeKind.Local).AddTicks(1654), 7, "Böğürtlen Yemeği", "default.jpg", "Tatlı tarifinin kısa bir başlığı.", true, false, "avcı böreği tarifi malzemeler listesi, html text editor ile yazılacak.", 4, new TimeSpan(0, 0, 25, 0, 0), "15 dk pişir, soğut, servis et vs.", "Caner Sahin", "Avcı böreği tarifi.", "börek, avcı, tarif", 2, 299, null },
+                    { 8, 0, new TimeSpan(0, 0, 15, 0, 0), new DateTime(2021, 2, 17, 22, 59, 6, 261, DateTimeKind.Local).AddTicks(1661), 8, "Peynir Yemeği", "default.jpg", "Tatlı tarifinin kısa bir başlığı.", true, false, "avcı böreği tarifi malzemeler listesi, html text editor ile yazılacak.", 4, new TimeSpan(0, 0, 25, 0, 0), "15 dk pişir, soğut, servis et vs.", "Caner Sahin", "Avcı böreği tarifi.", "börek, avcı, tarif", 1, 299, null }
                 });
 
             migrationBuilder.InsertData(
@@ -326,14 +326,14 @@ namespace Recipes.Service.Migrations
                 columns: new[] { "Id", "CommentText", "CreateDate", "EmailAddress", "Fullname", "IsConfirmed", "IsDeleted", "RecipeId", "UserId", "WhyNotConfirmed" },
                 values: new object[,]
                 {
-                    { 1, "Tatlı çok güzel olmuş.", new DateTime(2021, 2, 7, 22, 19, 6, 126, DateTimeKind.Local).AddTicks(194), "cnrshn@gmail.com", "Caner Sahin", true, false, 1, 1, null },
-                    { 2, "Güzel bir börek olmuş", new DateTime(2021, 2, 7, 22, 19, 6, 126, DateTimeKind.Local).AddTicks(3407), "cnrshn@gmail.com", "Caner Sahin", true, false, 2, 2, null },
-                    { 3, "Tatlıya bayıldım...", new DateTime(2021, 2, 7, 22, 19, 6, 126, DateTimeKind.Local).AddTicks(3454), "cnrshn@gmail.com", "Caner Sahin", true, false, 3, 1, null },
-                    { 4, "Tatlıya bayıldım...", new DateTime(2021, 2, 7, 22, 19, 6, 126, DateTimeKind.Local).AddTicks(3458), "cnrshn@gmail.com", "Caner Sahin", true, false, 4, 2, null },
-                    { 5, "Tatlıya bayıldım...", new DateTime(2021, 2, 7, 22, 19, 6, 126, DateTimeKind.Local).AddTicks(3462), "cnrshn@gmail.com", "Caner Sahin", true, false, 5, 2, null },
-                    { 6, "Tatlıya bayıldım...", new DateTime(2021, 2, 7, 22, 19, 6, 126, DateTimeKind.Local).AddTicks(3467), "cnrshn@gmail.com", "Caner Sahin", true, false, 6, 1, null },
-                    { 7, "Tatlıya bayıldım...", new DateTime(2021, 2, 7, 22, 19, 6, 126, DateTimeKind.Local).AddTicks(3472), "cnrshn@gmail.com", "Caner Sahin", true, false, 7, 2, null },
-                    { 8, "Tatlıya bayıldım...", new DateTime(2021, 2, 7, 22, 19, 6, 126, DateTimeKind.Local).AddTicks(3476), "cnrshn@gmail.com", "Caner Sahin", true, false, 8, 2, null }
+                    { 1, "Tatlı çok güzel olmuş.", new DateTime(2021, 2, 17, 22, 59, 6, 266, DateTimeKind.Local).AddTicks(3142), "cnrshn@gmail.com", "Caner Sahin", true, false, 1, 1, null },
+                    { 2, "Güzel bir börek olmuş", new DateTime(2021, 2, 17, 22, 59, 6, 266, DateTimeKind.Local).AddTicks(6137), "cnrshn@gmail.com", "Caner Sahin", true, false, 2, 2, null },
+                    { 3, "Tatlıya bayıldım...", new DateTime(2021, 2, 17, 22, 59, 6, 266, DateTimeKind.Local).AddTicks(6179), "cnrshn@gmail.com", "Caner Sahin", true, false, 3, 1, null },
+                    { 4, "Tatlıya bayıldım...", new DateTime(2021, 2, 17, 22, 59, 6, 266, DateTimeKind.Local).AddTicks(6183), "cnrshn@gmail.com", "Caner Sahin", true, false, 4, 2, null },
+                    { 5, "Tatlıya bayıldım...", new DateTime(2021, 2, 17, 22, 59, 6, 266, DateTimeKind.Local).AddTicks(6187), "cnrshn@gmail.com", "Caner Sahin", true, false, 5, 2, null },
+                    { 6, "Tatlıya bayıldım...", new DateTime(2021, 2, 17, 22, 59, 6, 266, DateTimeKind.Local).AddTicks(6191), "cnrshn@gmail.com", "Caner Sahin", true, false, 6, 1, null },
+                    { 7, "Tatlıya bayıldım...", new DateTime(2021, 2, 17, 22, 59, 6, 266, DateTimeKind.Local).AddTicks(6194), "cnrshn@gmail.com", "Caner Sahin", true, false, 7, 2, null },
+                    { 8, "Tatlıya bayıldım...", new DateTime(2021, 2, 17, 22, 59, 6, 266, DateTimeKind.Local).AddTicks(6198), "cnrshn@gmail.com", "Caner Sahin", true, false, 8, 2, null }
                 });
 
             migrationBuilder.CreateIndex(

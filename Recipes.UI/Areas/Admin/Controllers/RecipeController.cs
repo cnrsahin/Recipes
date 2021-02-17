@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 using Recipes.Service.Core.Abstract;
 using Recipes.Service.Core.Concrete.Entities;
 using Recipes.UI.Areas.Admin.Models;
+using Recipes.UI.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +18,12 @@ namespace Recipes.UI.Areas.Admin.Controllers
     public class RecipeController : Controller
     {
         private readonly IRecipeRepository _recipeRepository;
+        private readonly IMapper _mapper;
 
-        public RecipeController(IRecipeRepository recipeRepository)
+        public RecipeController(IRecipeRepository recipeRepository, IMapper mapper)
         {
             _recipeRepository = recipeRepository ?? throw new ArgumentNullException(nameof(recipeRepository));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         [Authorize(Roles = "Admin, Editor")]
@@ -28,12 +31,21 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var recipes = await _recipeRepository.GetAllAsync(x => !x.IsDeleted && x.IsConfirmed, x => x.User, x => x.FoodCategory);
+            if (recipes == null) 
+                return NotFound();
 
-            if (recipes == null) return NotFound();
+            var recipeDto = _mapper.Map<IEnumerable<RecipeIndexDto>>(recipes);
+
+            foreach (var recipe in recipeDto)
+            {
+                var recipeSelected = recipes.FirstOrDefault(r => r.Id == recipe.Id);
+                recipe.FoodCategoryName = recipeSelected.FoodCategory.CategoryName;
+                recipe.UserName = recipeSelected.User.UserName;
+            }
 
             var model = new RecipeIndexViewModel
             {
-                Recipes = recipes
+                Recipes = recipeDto
             };
 
             return View(model);
@@ -45,12 +57,21 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> GetRemoved()
         {
             var recipes = await _recipeRepository.GetAllAsync(x => x.IsDeleted && x.IsConfirmed, x => x.User, x => x.FoodCategory);
+            if (recipes == null) 
+                return NotFound();
 
-            if (recipes == null) return NotFound();
+            var recipeDto = _mapper.Map<IEnumerable<RecipeIndexDto>>(recipes);
+
+            foreach (var recipe in recipeDto)
+            {
+                var recipeSelected = recipes.FirstOrDefault(r => r.Id == recipe.Id);
+                recipe.FoodCategoryName = recipeSelected.FoodCategory.CategoryName;
+                recipe.UserName = recipeSelected.User.UserName;
+            }
 
             var model = new RecipeIndexViewModel
             {
-                Recipes = recipes
+                Recipes = recipeDto
             };
 
             return View(model);
@@ -61,12 +82,21 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> WaitConfirm()
         {
             var recipes = await _recipeRepository.GetAllAsync(x => !x.IsDeleted && !x.IsConfirmed, x => x.User, x => x.FoodCategory);
+            if (recipes == null) 
+                return NotFound();
 
-            if (recipes == null) return NotFound();
+            var recipeDto = _mapper.Map<IEnumerable<RecipeIndexDto>>(recipes);
+
+            foreach (var recipe in recipeDto)
+            {
+                var recipeSelected = recipes.FirstOrDefault(r => r.Id == recipe.Id);
+                recipe.FoodCategoryName = recipeSelected.FoodCategory.CategoryName;
+                recipe.UserName = recipeSelected.User.UserName;
+            }
 
             var model = new RecipeIndexViewModel
             {
-                Recipes = recipes
+                Recipes = recipeDto
             };
 
             return View(model);
@@ -77,12 +107,21 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> NotConfirmed()
         {
             var recipes = await _recipeRepository.GetAllAsync(x => x.IsDeleted && !x.IsConfirmed, x => x.User, x => x.FoodCategory);
+            if (recipes == null) 
+                return NotFound();
 
-            if (recipes == null) return NotFound();
+            var recipeDto = _mapper.Map<IEnumerable<RecipeIndexDto>>(recipes);
+
+            foreach (var recipe in recipeDto)
+            {
+                var recipeSelected = recipes.FirstOrDefault(r => r.Id == recipe.Id);
+                recipe.FoodCategoryName = recipeSelected.FoodCategory.CategoryName;
+                recipe.UserName = recipeSelected.User.UserName;
+            }
 
             var model = new RecipeIndexViewModel
             {
-                Recipes = recipes
+                Recipes = recipeDto
             };
 
             return View(model);
@@ -96,7 +135,6 @@ namespace Recipes.UI.Areas.Admin.Controllers
             recipe.IsDeleted = isWantDelete;
 
             var trashedRecipe = await _recipeRepository.UpdateAsync(recipe);
-
             var result = JsonSerializer.Serialize(trashedRecipe);
 
             return Json(result);

@@ -1,4 +1,5 @@
 ﻿using Recipes.Service.Core.Concrete.Entities;
+using Recipes.UI.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,6 @@ namespace Recipes.UI.Areas.Admin.Models
 {
     public class CommentIndexViewModel
     {
-        public IEnumerable<Comment> Comments { get; set; }
+        public IEnumerable<CommentIndexDto> Comments { get; set; }
     }
 }
