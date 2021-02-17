@@ -10,14 +10,3 @@ C:\Users\CANER\source\repos\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Reci
 C:\Users\CANER\source\repos\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Recipes.Service.pdb
 C:\Users\CANER\source\repos\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Recipes.Service.genruntimeconfig.cache
 C:\Users\CANER\source\repos\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Recipes.Service.csprojAssemblyReference.cache
-C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\bin\Debug\netcoreapp3.1\Recipes.Service.deps.json
-C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\bin\Debug\netcoreapp3.1\Recipes.Service.runtimeconfig.json
-C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\bin\Debug\netcoreapp3.1\Recipes.Service.runtimeconfig.dev.json
-C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\bin\Debug\netcoreapp3.1\Recipes.Service.dll
-C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\bin\Debug\netcoreapp3.1\Recipes.Service.pdb
-C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Recipes.Service.AssemblyInfoInputs.cache
-C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Recipes.Service.AssemblyInfo.cs
-C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Recipes.Service.csproj.CoreCompileInputs.cache
-C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Recipes.Service.dll
-C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Recipes.Service.pdb
-C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Recipes.Service.genruntimeconfig.cache
