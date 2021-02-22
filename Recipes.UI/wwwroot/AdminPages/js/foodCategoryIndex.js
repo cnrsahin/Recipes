@@ -21,4 +21,29 @@
             }
         });
     });
+
+    $(function () {
+        /*  Modal Add form starts*/
+        const placeModal = $('#placeModal');
+        const url = '/Admin/FoodCategory/Add/';
+        $('#AddBtn').click(function () {
+            $.get(url).done(function (data) {
+                placeModal.html(data);
+                placeModal.find(".modal").modal('show');
+            });
+        });
+        /* Modal Add form ends. */
+
+        placeModal.on('click', '#btnSave', function (event) {
+            event.preventDefault();
+            const postForm = $('#categoryAdd');
+            const url = postForm.attr('action');
+            const dataSend = postForm.serialize();
+
+            $.post(url, dataSend).done(function (data) {
+                toastr.info(data, 'Yeni Kategori Sonucu');
+                placeModal.find(".modal").modal('hide');
+            });
+        });
+    });
 });

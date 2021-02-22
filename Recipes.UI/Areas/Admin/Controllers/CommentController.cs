@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Recipes.Service.Core.Abstract;
-using Recipes.Service.Core.Concrete.Entities;
 using Recipes.UI.Areas.Admin.Models;
 using Recipes.UI.Dtos;
 using System;
@@ -29,8 +28,8 @@ namespace Recipes.UI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var comments = await _commentRepository.GetAllAsync(c => !c.IsDeleted && c.IsConfirmed, c => c.Recipe, c=>  c.User);
-            if (comments == null) 
+            var comments = await _commentRepository.GetAllAsync(c => !c.IsDeleted && c.IsConfirmed, c => c.Recipe, c => c.User);
+            if (comments == null)
                 return NotFound();
 
             var dto = _mapper.Map<IEnumerable<CommentIndexDto>>(comments);
@@ -54,8 +53,8 @@ namespace Recipes.UI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> GetRemoved()
         {
-            var comments = await _commentRepository.GetAllAsync(c => c.IsDeleted && c.IsConfirmed, c => c.Recipe, c=> c.User);
-            if (comments == null) 
+            var comments = await _commentRepository.GetAllAsync(c => c.IsDeleted && c.IsConfirmed, c => c.Recipe, c => c.User);
+            if (comments == null)
                 return NotFound();
 
             var dto = _mapper.Map<IEnumerable<CommentIndexDto>>(comments);
@@ -82,11 +81,9 @@ namespace Recipes.UI.Areas.Admin.Controllers
             var comment = await _commentRepository.GetAsync(x => x.Id == commentId);
             comment.IsDeleted = isWantDelete;
 
-            var trashedComment = await _commentRepository.UpdateAsync(comment);
+            await _commentRepository.UpdateAsync(comment);
 
-            var result = JsonSerializer.Serialize(trashedComment);
-
-            return Json(result);
+            return Json("Test");
         }
 
         [Authorize(Roles = "Admin, Editor")]
@@ -94,7 +91,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> WaitConfirm()
         {
             var comments = await _commentRepository.GetAllAsync(c => !c.IsDeleted && !c.IsConfirmed, c => c.Recipe, c => c.User);
-            if (comments == null) 
+            if (comments == null)
                 return NotFound();
 
             var dto = _mapper.Map<IEnumerable<CommentIndexDto>>(comments);
@@ -119,7 +116,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> NotConfirmed()
         {
             var comments = await _commentRepository.GetAllAsync(c => c.IsDeleted && !c.IsConfirmed, c => c.Recipe, c => c.User);
-            if (comments == null) 
+            if (comments == null)
                 return NotFound();
 
             var dto = _mapper.Map<IEnumerable<CommentIndexDto>>(comments);

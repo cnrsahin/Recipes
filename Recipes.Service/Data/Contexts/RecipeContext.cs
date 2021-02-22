@@ -2,13 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Recipes.Service.Core.Concrete.Entities;
 using Recipes.Service.Data.Configurations;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Recipes.Service.Data.Contexts
 {
-    public class RecipeContext : IdentityDbContext<User, Role, int, UserClaim, 
+    public class RecipeContext : IdentityDbContext<User, Role, int, UserClaim,
         UserRole, UserLogin, RoleClaim, UserToken>
     {
         public DbSet<FoodCategory> FoodCategories { get; set; }

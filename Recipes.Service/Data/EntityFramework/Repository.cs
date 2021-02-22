@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Recipes.Service.Data.EntityFramework
@@ -17,10 +16,10 @@ namespace Recipes.Service.Data.EntityFramework
         {
             _context = context;
         }
-        public async Task<T> AddAsync(T entity)
+        public async Task AddAsync(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
-            return entity;
+            await _context.SaveChangesAsync();
         }
 
         public async Task<bool> AnyAsync(Expression<Func<T, bool>> predicate)
@@ -76,11 +75,10 @@ namespace Recipes.Service.Data.EntityFramework
             return await queryResult.SingleOrDefaultAsync();
         }
 
-        public async Task<T> UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
             await Task.Run(() => { _context.Set<T>().Update(entity); });
             await _context.SaveChangesAsync();
-            return entity;
         }
     }
 }

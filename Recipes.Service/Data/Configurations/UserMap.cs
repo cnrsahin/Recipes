@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Recipes.Service.Core.Concrete.Entities;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Recipes.Service.Data.Configurations
 {

@@ -6,10 +6,11 @@
     <li class="breadcrumb-item active">Kategoriler</li>
 </ol>
 
+<div id="placeModal" aria-hidden="true"></div>
 <div class="card mb-4">
     <div class="card-header">
         <div class="mb-2 text-center">
-            <a class="btn btn-lg btn-outline-success" asp-controller="Home" asp-action="Index">Kategori Ekle</a>
+            <a class="btn btn-lg btn-outline-success" id="AddBtn">Kategori Ekle</a>
         </div>
     </div>
     <div class="card-body">
@@ -48,5 +49,8 @@
 
 @section Scripts {
     <script src="~/AdminPages/js/dataTableTurkish.js" type="text/ecmascript"></script>
-    <script src="~/AdminPages/js/foodCategoryIndex.js" type="application/ecmascript"></script>
+    <script src="AdminPages/js/toastrOptions.js" type="text/ecmascript"></script>
+    <script src="~/AdminPages/js/foodCategoryIndex.js" type="text/ecmascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" crossorigin="anonymous"></script>
+
 }

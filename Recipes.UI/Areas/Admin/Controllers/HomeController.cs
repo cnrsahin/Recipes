@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Recipes.Service.Core.Abstract;
 using Recipes.Service.Core.Concrete.Entities;
 using Recipes.UI.Areas.Admin.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Recipes.UI.Areas.Admin.Controllers

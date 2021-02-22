@@ -2,8 +2,6 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Recipes.Service.Core.Concrete.Entities;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Recipes.Service.Data.Configurations
 {
@@ -19,7 +17,7 @@ namespace Recipes.Service.Data.Configurations
             builder.Property(f => f.CreateDate).IsRequired();
             builder.Property(f => f.IsDeleted).IsRequired();
             builder.Property(f => f.IsConfirmed).IsRequired();
-            builder.Property(f=> f.WhyNotConfirmed).HasMaxLength(250);
+            builder.Property(f => f.WhyNotConfirmed).HasMaxLength(250);
 
 
             builder.HasOne<User>(c => c.User).WithMany(r => r.FoodCategories).HasForeignKey(c => c.UserId)

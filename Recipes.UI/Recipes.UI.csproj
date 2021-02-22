@@ -5,9 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Profiles\**" />
+    <Content Remove="Profiles\**" />
+    <EmbeddedResource Remove="Profiles\**" />
+    <None Remove="Profiles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Helpers\ImageAddDel\" />
     <Folder Include="Helpers\Messages\" />
-    <Folder Include="Profiles\" />
   </ItemGroup>
 
   <ItemGroup>

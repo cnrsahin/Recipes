@@ -2,7 +2,7 @@
     $(document).on('click', '#doActiveOrPassive', function (event) {
         event.preventDefault();
         const id = $(this).attr('data-id');
-
+        
         $.ajax({
             type: 'POST',
             dataType: 'json',
@@ -19,6 +19,5 @@
                 alert("Bu işlem için yetkiniz bulunmamaktadır!");
             }
         });
-
     });
 });

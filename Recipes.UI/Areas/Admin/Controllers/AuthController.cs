@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Recipes.Service.Core.Concrete.Entities;
 using Recipes.UI.Dtos;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Recipes.UI.Areas.Admin.Controllers
@@ -45,7 +43,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
                         ModelState.AddModelError("", "Böyle bir kullanıcı bulunamadı!");
                         return View();
                     }
-                    
+
                     var result = await _signInManager.PasswordSignInAsync(user, userLoginDto.Password, userLoginDto.RememberMe, false);
 
                     if (result.Succeeded)

@@ -9,7 +9,6 @@ using Recipes.UI.Areas.Admin.Models;
 using Recipes.UI.Dtos;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -38,7 +37,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var users = await _userManager.Users.ToListAsync();
-            if (users == null) 
+            if (users == null)
                 return NotFound();
 
             var usersDto = _mapper.Map<IEnumerable<UserIndexDto>>(users);
@@ -59,13 +58,13 @@ namespace Recipes.UI.Areas.Admin.Controllers
             {
                 var user = await _userManager.FindByIdAsync(userId.ToString());
                 user.IsActive = user.IsActive ? false : true;
-                
+
                 var updatedUser = await _userManager.UpdateAsync(user);
                 var result = JsonSerializer.Serialize(updatedUser);
 
                 return Json(result);
             }
-            
+
             return Json("Admin silinemez.");
         }
     }

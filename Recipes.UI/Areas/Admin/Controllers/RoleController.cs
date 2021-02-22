@@ -5,8 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Recipes.Service.Core.Concrete.Entities;
 using Recipes.UI.Areas.Admin.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Recipes.UI.Areas.Admin.Controllers
@@ -28,7 +26,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
             var roles = await _roleManager.Roles.ToListAsync();
 
             if (roles == null) return NotFound();
-           
+
             var model = new RoleIndexViewModel
             {
                 Roles = roles

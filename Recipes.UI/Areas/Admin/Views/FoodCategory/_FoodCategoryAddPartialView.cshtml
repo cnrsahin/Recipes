@@ -1,0 +1,39 @@
+﻿@model FoodCategoryAddDto
+
+<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-warning"><span class="fas fa-utensils"></span> Yeni Kategori Ekle</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Kapat">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Add" id="categoryAdd">
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                    <div asp-validation-summary="All" class="text-danger" id="validation-summary" aria-hidden="true" style="display: none;"></div>
+                    <div class="form-group">
+                        <label asp-for="CategoryName"></label>
+                        <input class="form-control" asp-for="CategoryName" />
+                        <span class="text-danger" asp-validation-for="CategoryName"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CategoryDescription"></label>
+                        <input class="form-control" asp-for="CategoryDescription" />
+                        <span class="text-danger" asp-validation-for="CategoryDescription"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="thumbnailUpload" asp-for="CategoryPicture"></label>
+                        <input type="file" asp-for="CategoryPicture" id="thumbnailUpload" accept="image/*" class="form-control-file" />
+                        <span asp-validation-for="CategoryPicture" class="text-danger"></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-outline-danger" data-dismiss="modal"><span class="fas fa-times"></span> Vazgeç</button>
+                <button type="button" class="btn btn-sm btn-outline-success" id="btnSave"><span class="fas fa-save"></span> Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>

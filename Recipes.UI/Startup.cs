@@ -1,4 +1,3 @@
-using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,10 +12,6 @@ using Recipes.Service.Data.Contexts;
 using Recipes.Service.Data.EntityFramework;
 using Recipes.UI.AutoMapper;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Recipes.UI
 {
@@ -32,7 +27,6 @@ namespace Recipes.UI
         {
             services.AddControllersWithViews();
             services.AddSession();
-
             services.AddAutoMapper(typeof(Profiles));
 
             services.AddDbContext<RecipeContext>(opt =>
@@ -45,17 +39,17 @@ namespace Recipes.UI
 
             services.AddIdentity<User, Role>(opt =>
             {
-                // Kullanýcý Þifre kurallarý
-                opt.Password.RequireDigit = false; // þifrede rakam olmalý mý ?
-                opt.Password.RequiredLength = 4; // þifre uzunluðu en az kaç olmalý ?
-                opt.Password.RequiredUniqueChars = 0; // Özel karakterlerden farklý farklý kaç tane olmak zorunda ?
-                opt.Password.RequireNonAlphanumeric = false; // özel karakter olmak zorunda mý?
+                // Kullanï¿½cï¿½ ï¿½ifre kurallarï¿½
+                opt.Password.RequireDigit = false; // ï¿½ifrede rakam olmalï¿½ mï¿½ ?
+                opt.Password.RequiredLength = 4; // ï¿½ifre uzunluï¿½u en az kaï¿½ olmalï¿½ ?
+                opt.Password.RequiredUniqueChars = 0; // ï¿½zel karakterlerden farklï¿½ farklï¿½ kaï¿½ tane olmak zorunda ?
+                opt.Password.RequireNonAlphanumeric = false; // ï¿½zel karakter olmak zorunda mï¿½?
                 opt.Password.RequireLowercase = false; // Kucuk harf zorunlu mu ?
                 opt.Password.RequireUppercase = false; // Buyuk harf zorunlu mu ?
 
-                // Kullanýcý adý ve email ayarlarý
-                opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+$"; // kullanýcý adýnda hangi karakterler olacaksa yazýyoruz.
-                opt.User.RequireUniqueEmail = true; // 1 email ile tek kayýt olabilir.
+                // Kullanï¿½cï¿½ adï¿½ ve email ayarlarï¿½
+                opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+$"; // kullanï¿½cï¿½ adï¿½nda hangi karakterler olacaksa yazï¿½yoruz.
+                opt.User.RequireUniqueEmail = true; // 1 email ile tek kayï¿½t olabilir.
             }).AddEntityFrameworkStores<RecipeContext>();
 
 
@@ -71,13 +65,13 @@ namespace Recipes.UI
                 opt.Cookie = new CookieBuilder
                 {
                     Name = "Recipes",
-                    HttpOnly = true, // sadece http üzerinden cookie bilgilerine eriþilebilir, js vs eriþilemez.
-                    SameSite = SameSiteMode.Strict, // Cross Site Requset Forgery saldýrýsý önler. sahte istekler gönderimi. kullanýcýnýn farkýnda olmadan
-                                                    // coockie bilgileriyle servera istek gönderilmesidir. Strict ile coockie bilgilerinin sadece kendi sitemizden geldiðinde iþlenmesi.
-                    SecurePolicy = CookieSecurePolicy.SameAsRequest // SameAsRequest http ve https alabilir. Always yapacagým bilgilerin sadece https üzerinden gelmesi. 
+                    HttpOnly = true, // sadece http ï¿½zerinden cookie bilgilerine eriï¿½ilebilir, js vs eriï¿½ilemez.
+                    SameSite = SameSiteMode.Strict, // Cross Site Requset Forgery saldï¿½rï¿½sï¿½ ï¿½nler. sahte istekler gï¿½nderimi. kullanï¿½cï¿½nï¿½n farkï¿½nda olmadan
+                                                    // coockie bilgileriyle servera istek gï¿½nderilmesidir. Strict ile coockie bilgilerinin sadece kendi sitemizden geldiï¿½inde iï¿½lenmesi.
+                    SecurePolicy = CookieSecurePolicy.SameAsRequest // SameAsRequest http ve https alabilir. Always yapacagï¿½m bilgilerin sadece https ï¿½zerinden gelmesi. 
                 };
-                opt.SlidingExpiration = true; // Tekrar þifre giriþi gerekmez.
-                opt.ExpireTimeSpan = System.TimeSpan.FromHours(9); // Süresi.
+                opt.SlidingExpiration = true; // Tekrar ï¿½ifre giriï¿½i gerekmez.
+                opt.ExpireTimeSpan = System.TimeSpan.FromHours(9); // Sï¿½resi.
                 opt.AccessDeniedPath = new PathString("/Admin/Auth/AccessDenied");
             });
         }

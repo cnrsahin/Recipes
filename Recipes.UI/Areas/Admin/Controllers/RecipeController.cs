@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using Recipes.Service.Core.Abstract;
-using Recipes.Service.Core.Concrete.Entities;
 using Recipes.UI.Areas.Admin.Models;
 using Recipes.UI.Dtos;
 using System;
@@ -31,7 +29,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var recipes = await _recipeRepository.GetAllAsync(x => !x.IsDeleted && x.IsConfirmed, x => x.User, x => x.FoodCategory);
-            if (recipes == null) 
+            if (recipes == null)
                 return NotFound();
 
             var recipeDto = _mapper.Map<IEnumerable<RecipeIndexDto>>(recipes);
@@ -57,7 +55,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> GetRemoved()
         {
             var recipes = await _recipeRepository.GetAllAsync(x => x.IsDeleted && x.IsConfirmed, x => x.User, x => x.FoodCategory);
-            if (recipes == null) 
+            if (recipes == null)
                 return NotFound();
 
             var recipeDto = _mapper.Map<IEnumerable<RecipeIndexDto>>(recipes);
@@ -82,7 +80,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> WaitConfirm()
         {
             var recipes = await _recipeRepository.GetAllAsync(x => !x.IsDeleted && !x.IsConfirmed, x => x.User, x => x.FoodCategory);
-            if (recipes == null) 
+            if (recipes == null)
                 return NotFound();
 
             var recipeDto = _mapper.Map<IEnumerable<RecipeIndexDto>>(recipes);
@@ -107,7 +105,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> NotConfirmed()
         {
             var recipes = await _recipeRepository.GetAllAsync(x => x.IsDeleted && !x.IsConfirmed, x => x.User, x => x.FoodCategory);
-            if (recipes == null) 
+            if (recipes == null)
                 return NotFound();
 
             var recipeDto = _mapper.Map<IEnumerable<RecipeIndexDto>>(recipes);
@@ -134,10 +132,9 @@ namespace Recipes.UI.Areas.Admin.Controllers
             var recipe = await _recipeRepository.GetAsync(x => x.Id == recipeId);
             recipe.IsDeleted = isWantDelete;
 
-            var trashedRecipe = await _recipeRepository.UpdateAsync(recipe);
-            var result = JsonSerializer.Serialize(trashedRecipe);
+            await _recipeRepository.UpdateAsync(recipe);
 
-            return Json(result);
+            return Json("Test");
         }
     }
 }

@@ -4,7 +4,6 @@ using Recipes.Service.Core.Abstract;
 using Recipes.Service.Core.Concrete.Entities;
 using Recipes.UI.Areas.Admin.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,7 +17,7 @@ namespace Recipes.UI.Areas.Admin.ViewComponents
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
 
-        public MenuViewComponent(UserManager<User> userManager, IRecipeRepository recipeRepository, 
+        public MenuViewComponent(UserManager<User> userManager, IRecipeRepository recipeRepository,
             IFoodCategoryRepository foodCategoryRepository, ICommentRepository commentRepository, RoleManager<Role> roleManager)
         {
             _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));

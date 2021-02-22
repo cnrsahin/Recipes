@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Recipes.Service.Core.Abstract;
 using Recipes.Service.Core.Concrete.Entities;
@@ -18,19 +19,23 @@ namespace Recipes.UI.Areas.Admin.Controllers
     {
         private readonly IFoodCategoryRepository _foodCategoryRepository;
         private readonly IMapper _mapper;
+        private readonly UserManager<User> _userManager;
 
-        public FoodCategoryController(IFoodCategoryRepository foodCategoryRepository, IMapper mapper)
+        public FoodCategoryController(IFoodCategoryRepository foodCategoryRepository, IMapper mapper, UserManager<User> userManager)
         {
             _foodCategoryRepository = foodCategoryRepository ?? throw new ArgumentNullException(nameof(foodCategoryRepository));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
         }
+
+        private User Who => _userManager.GetUserAsync(HttpContext.User).Result;
 
         [Authorize(Roles = "Admin, Editor")]
         [HttpGet]
         public async Task<IActionResult> Index()
         {
             var categories = await _foodCategoryRepository.GetAllAsync(c => !c.IsDeleted && c.IsConfirmed, c => c.User);
-            if (categories == null) 
+            if (categories == null)
                 return NotFound();
 
             var dto = _mapper.Map<IEnumerable<FoodCategoryIndexDto>>(categories);
@@ -54,7 +59,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> GetRemoved()
         {
             var categories = await _foodCategoryRepository.GetAllAsync(c => c.IsDeleted && c.IsConfirmed, c => c.User);
-            if (categories == null) 
+            if (categories == null)
                 return NotFound();
 
             var dto = _mapper.Map<IEnumerable<FoodCategoryIndexDto>>(categories);
@@ -80,11 +85,9 @@ namespace Recipes.UI.Areas.Admin.Controllers
             var foodCategory = await _foodCategoryRepository.GetAsync(x => x.Id == foodCategoryId);
             foodCategory.IsDeleted = isWantDelete;
 
-            var trashedFoodCategory = await _foodCategoryRepository.UpdateAsync(foodCategory);
+            await _foodCategoryRepository.UpdateAsync(foodCategory);
 
-            var result = JsonSerializer.Serialize(trashedFoodCategory);
-
-            return Json(result);
+            return Json("Test");
         }
 
         [Authorize(Roles = "Admin, Editor")]
@@ -92,7 +95,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> WaitConfirm()
         {
             var categories = await _foodCategoryRepository.GetAllAsync(c => !c.IsDeleted && !c.IsConfirmed, c => c.User);
-            if (categories == null) 
+            if (categories == null)
                 return NotFound();
 
             var dto = _mapper.Map<IEnumerable<FoodCategoryIndexDto>>(categories);
@@ -116,7 +119,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> NotConfirmed()
         {
             var categories = await _foodCategoryRepository.GetAllAsync(c => c.IsDeleted && !c.IsConfirmed, c => c.User);
-            if (categories == null) 
+            if (categories == null)
                 return NotFound();
 
             var dto = _mapper.Map<IEnumerable<FoodCategoryIndexDto>>(categories);
@@ -133,6 +136,30 @@ namespace Recipes.UI.Areas.Admin.Controllers
             };
 
             return View(model);
+        }
+
+        [Authorize(Roles = "Admin, Editor")]
+        [HttpGet]
+        public PartialViewResult Add()
+        {
+            return PartialView("_FoodCategoryAddPartialView");
+        }
+
+        [Authorize(Roles = "Admin, Editor")]
+        [HttpPost]
+        public async Task<IActionResult> Add(FoodCategoryAddDto foodCategoryAddDto)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var foodCategory = _mapper.Map<FoodCategory>(foodCategoryAddDto);
+                foodCategory.UserId = Who.Id;
+                await _foodCategoryRepository.AddAsync(foodCategory);
+
+                return Json("Onay bekleyenlere taşındı, yönetici onayından sonra yayınlanacaktır.");
+            }
+
+            return Json("Hata!");
         }
     }
 }
