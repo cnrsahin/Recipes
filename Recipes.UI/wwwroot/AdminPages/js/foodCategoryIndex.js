@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $(document).on('click', '#deleteOrUndoDelete', function (event) {
+    $(document).on('click', '#delete', function (event) {
         event.preventDefault();
         const id = $(this).attr('data-id');
 
@@ -7,10 +7,9 @@
             type: 'POST',
             dataType: 'json',
             data: {
-                foodCategoryId: id,
-                isWantDelete: true
+                foodCategoryId: id
             },
-            url: '/Admin/FoodCategory/DeleteOrUndoDelete/',
+            url: '/Admin/FoodCategory/Delete/',
             success: function () {
                 alert("Çöp kutusuna taşındı!");
                 window.location.href = 'FoodCategory';
@@ -41,7 +40,7 @@
             const dataSend = postForm.serialize();
 
             $.post(url, dataSend).done(function (data) {
-                toastr.info(data, 'Yeni Kategori Sonucu');
+                toastr.info(data, 'Yeni Kategori Sonucu', {timeOut: 3000});
                 placeModal.find(".modal").modal('hide');
             });
         });

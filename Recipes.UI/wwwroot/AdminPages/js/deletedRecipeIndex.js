@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $(document).on('click', '#deleteOrUndoDelete', function (event) {
+    $(document).on('click', '#UnDelete', function (event) {
         event.preventDefault();
         const id = $(this).attr('data-id');
 
@@ -7,10 +7,9 @@
             type: 'POST',
             dataType: 'json',
             data: {
-                recipeId: id,
-                isWantDelete: false
+                recipeId: id
             },
-            url: '/Admin/Recipe/DeleteOrUndoDelete/',
+            url: '/Admin/Recipe/UnDelete/',
             success: function (data) {
                 alert("Çöp kutusundan geri alındı!");
                 window.location.href = 'GetRemoved';

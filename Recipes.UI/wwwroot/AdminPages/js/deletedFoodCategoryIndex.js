@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $(document).on('click', '#deleteOrUndoDelete', function (event) {
+    $(document).on('click', '#UnDelete', function (event) {
         event.preventDefault();
         const id = $(this).attr('data-id');
 
@@ -7,10 +7,9 @@
             type: 'POST',
             dataType: 'json',
             data: {
-                foodCategoryId: id,
-                isWantDelete: false
+                foodCategoryId: id
             },
-            url: '/Admin/FoodCategory/DeleteOrUndoDelete/',
+            url: '/Admin/FoodCategory/UnDelete/',
             success: function (data) {
                 alert("Çöp kutusundan geri alındı!");
                 window.location.href = 'GetRemoved';

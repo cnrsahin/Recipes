@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $(document).on('click', '#deleteOrUndoDelete', function (event) {
+    $(document).on('click', '#delete', function (event) {
         event.preventDefault();
         const id = $(this).attr('data-id');
 
@@ -7,10 +7,9 @@
             type: 'POST',
             dataType: 'json',
             data: {
-                commentId: id,
-                isWantDelete: true
+                commentId: id
             },
-            url: '/Admin/Comment/DeleteOrUndoDelete/',
+            url: '/Admin/Comment/Delete/',
             success: function () {
                 alert("Çöp kutusuna taşındı!");
                 window.location.href = 'Comment';

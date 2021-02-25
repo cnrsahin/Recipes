@@ -21,3 +21,4 @@ C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\
 C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Recipes.Service.dll
 C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Recipes.Service.pdb
 C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Recipes.Service.genruntimeconfig.cache
+C:\Users\CANER\Desktop\Software\Recipes\Recipes.Service\obj\Debug\netcoreapp3.1\Recipes.Service.csprojAssemblyReference.cache

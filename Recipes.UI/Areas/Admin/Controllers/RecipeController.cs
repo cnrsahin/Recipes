@@ -127,10 +127,22 @@ namespace Recipes.UI.Areas.Admin.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<JsonResult> DeleteOrUndoDelete(int recipeId, bool isWantDelete)
+        public async Task<JsonResult> Delete(int recipeId)
         {
             var recipe = await _recipeRepository.GetAsync(x => x.Id == recipeId);
-            recipe.IsDeleted = isWantDelete;
+            recipe.IsDeleted = true;
+
+            await _recipeRepository.UpdateAsync(recipe);
+
+            return Json("Test");
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<JsonResult> UnDelete(int recipeId)
+        {
+            var recipe = await _recipeRepository.GetAsync(x => x.Id == recipeId);
+            recipe.IsDeleted = false;
 
             await _recipeRepository.UpdateAsync(recipe);
 

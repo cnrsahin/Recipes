@@ -14,11 +14,8 @@ namespace Recipes.Service.Core.Concrete.Entities
         public bool IsDeleted { get; set; } = false;
         public bool IsConfirmed { get; set; } = false;
         public string WhyNotConfirmed { get; set; } = null;
-
-
         public int UserId { get; set; }
         public User User { get; set; }
-
         public ICollection<Recipe> Recipes { get; set; }
 
         public FoodCategory()

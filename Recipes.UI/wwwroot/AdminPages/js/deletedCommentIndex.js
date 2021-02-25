@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $(document).on('click', '#deleteOrUndoDelete', function (event) {
+    $(document).on('click', '#UnDelete', function (event) {
         event.preventDefault();
         const id = $(this).attr('data-id');
 
@@ -7,10 +7,9 @@
             type: 'POST',
             dataType: 'json',
             data: {
-                commentId: id,
-                isWantDelete: false
+                commentId: id
             },
-            url: '/Admin/Comment/DeleteOrUndoDelete/',
+            url: '/Admin/Comment/UnDelete/',
             success: function (data) {
                 alert("Çöp kutusundan geri alındı!");
                 window.location.href = 'GetRemoved';

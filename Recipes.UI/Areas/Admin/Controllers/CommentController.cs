@@ -76,10 +76,22 @@ namespace Recipes.UI.Areas.Admin.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<JsonResult> DeleteOrUndoDelete(int commentId, bool isWantDelete)
+        public async Task<JsonResult> Delete(int commentId)
         {
             var comment = await _commentRepository.GetAsync(x => x.Id == commentId);
-            comment.IsDeleted = isWantDelete;
+            comment.IsDeleted = true;
+
+            await _commentRepository.UpdateAsync(comment);
+
+            return Json("Test");
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<JsonResult> UnDelete(int commentId)
+        {
+            var comment = await _commentRepository.GetAsync(x => x.Id == commentId);
+            comment.IsDeleted = false;
 
             await _commentRepository.UpdateAsync(comment);
 

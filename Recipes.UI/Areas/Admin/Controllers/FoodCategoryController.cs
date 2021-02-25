@@ -20,6 +20,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
         private readonly IFoodCategoryRepository _foodCategoryRepository;
         private readonly IMapper _mapper;
         private readonly UserManager<User> _userManager;
+        private User Who => _userManager.GetUserAsync(HttpContext.User).Result;
 
         public FoodCategoryController(IFoodCategoryRepository foodCategoryRepository, IMapper mapper, UserManager<User> userManager)
         {
@@ -27,8 +28,6 @@ namespace Recipes.UI.Areas.Admin.Controllers
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
         }
-
-        private User Who => _userManager.GetUserAsync(HttpContext.User).Result;
 
         [Authorize(Roles = "Admin, Editor")]
         [HttpGet]
@@ -80,10 +79,22 @@ namespace Recipes.UI.Areas.Admin.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<JsonResult> DeleteOrUndoDelete(int foodCategoryId, bool isWantDelete)
+        public async Task<JsonResult> Delete(int foodCategoryId)
         {
             var foodCategory = await _foodCategoryRepository.GetAsync(x => x.Id == foodCategoryId);
-            foodCategory.IsDeleted = isWantDelete;
+            foodCategory.IsDeleted = true;
+
+            await _foodCategoryRepository.UpdateAsync(foodCategory);
+
+            return Json("Test");
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<JsonResult> UnDelete(int foodCategoryId)
+        {
+            var foodCategory = await _foodCategoryRepository.GetAsync(x => x.Id == foodCategoryId);
+            foodCategory.IsDeleted = false;
 
             await _foodCategoryRepository.UpdateAsync(foodCategory);
 
