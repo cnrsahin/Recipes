@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var category in Model.FoodCategories)
+                    @foreach (var category in Model.FoodCategoriesResult.Data)
                     {
                         <tr>
                             <th>@category.Id</th>

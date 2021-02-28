@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Recipes.Service.Core.Abstract;
 using Recipes.Service.Core.Concrete.Entities;
+using Recipes.Service.Results.Concrete;
 using Recipes.UI.Areas.Admin.Models;
 using Recipes.UI.Dtos;
 using System;
@@ -47,7 +48,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
 
             var model = new FoodCategoryIndexViewModel
             {
-                FoodCategories = dto
+                FoodCategoriesResult = new DataResult<IEnumerable<FoodCategoryIndexDto>>(ResultStatus.Success, "Liste Cekildi!", dto)
             };
 
             return View(model);
@@ -71,7 +72,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
 
             var model = new FoodCategoryIndexViewModel
             {
-                FoodCategories = dto
+                FoodCategoriesResult = new DataResult<IEnumerable<FoodCategoryIndexDto>>(ResultStatus.Success, "Liste Cekildi!", dto)
             };
 
             return View(model);
@@ -86,7 +87,9 @@ namespace Recipes.UI.Areas.Admin.Controllers
 
             await _foodCategoryRepository.UpdateAsync(foodCategory);
 
-            return Json("Test");
+            var model = JsonSerializer.Serialize(new Result(ResultStatus.Success, "Çöp kutusuna taşındı"));
+
+            return Json(model);
         }
 
         [Authorize(Roles = "Admin")]
@@ -119,7 +122,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
 
             var model = new FoodCategoryIndexViewModel
             {
-                FoodCategories = dto
+                FoodCategoriesResult = new DataResult<IEnumerable<FoodCategoryIndexDto>>(ResultStatus.Success, "Liste Cekildi!", dto)
             };
 
             return View(model);
@@ -143,7 +146,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
 
             var model = new FoodCategoryIndexViewModel
             {
-                FoodCategories = dto
+                FoodCategoriesResult = new DataResult<IEnumerable<FoodCategoryIndexDto>>(ResultStatus.Success, "Liste Cekildi!", dto)
             };
 
             return View(model);
@@ -162,7 +165,6 @@ namespace Recipes.UI.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 var foodCategory = _mapper.Map<FoodCategory>(foodCategoryAddDto);
                 foodCategory.UserId = Who.Id;
                 await _foodCategoryRepository.AddAsync(foodCategory);

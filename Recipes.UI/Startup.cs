@@ -39,17 +39,17 @@ namespace Recipes.UI
 
             services.AddIdentity<User, Role>(opt =>
             {
-                // Kullan�c� �ifre kurallar�
-                opt.Password.RequireDigit = false; // �ifrede rakam olmal� m� ?
-                opt.Password.RequiredLength = 4; // �ifre uzunlu�u en az ka� olmal� ?
-                opt.Password.RequiredUniqueChars = 0; // �zel karakterlerden farkl� farkl� ka� tane olmak zorunda ?
-                opt.Password.RequireNonAlphanumeric = false; // �zel karakter olmak zorunda m�?
+                // Kullanici Sifre kurallari
+                opt.Password.RequireDigit = false; // Sifrede rakam olmali mi ?
+                opt.Password.RequiredLength = 4; // Sifre uzunlugu en az kac olmali ?
+                opt.Password.RequiredUniqueChars = 0; // Ozel karakterlerden farkli farkli kac tane olmak zorunda ?
+                opt.Password.RequireNonAlphanumeric = false; // Ozel karakter olmak zorunda mi?
                 opt.Password.RequireLowercase = false; // Kucuk harf zorunlu mu ?
                 opt.Password.RequireUppercase = false; // Buyuk harf zorunlu mu ?
 
-                // Kullan�c� ad� ve email ayarlar�
-                opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+$"; // kullan�c� ad�nda hangi karakterler olacaksa yaz�yoruz.
-                opt.User.RequireUniqueEmail = true; // 1 email ile tek kay�t olabilir.
+                // Kullanici adi ve email ayarlari
+                opt.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+$"; // kullanici adinda hangi karakterler olacaksa yaziyoruz.
+                opt.User.RequireUniqueEmail = true; // 1 email ile tek kayit olabilir.
             }).AddEntityFrameworkStores<RecipeContext>();
 
 
@@ -65,13 +65,15 @@ namespace Recipes.UI
                 opt.Cookie = new CookieBuilder
                 {
                     Name = "Recipes",
-                    HttpOnly = true, // sadece http �zerinden cookie bilgilerine eri�ilebilir, js vs eri�ilemez.
-                    SameSite = SameSiteMode.Strict, // Cross Site Requset Forgery sald�r�s� �nler. sahte istekler g�nderimi. kullan�c�n�n fark�nda olmadan
-                                                    // coockie bilgileriyle servera istek g�nderilmesidir. Strict ile coockie bilgilerinin sadece kendi sitemizden geldi�inde i�lenmesi.
-                    SecurePolicy = CookieSecurePolicy.SameAsRequest // SameAsRequest http ve https alabilir. Always yapacag�m bilgilerin sadece https �zerinden gelmesi. 
+                    HttpOnly = true, // sadece http uzerinden cookie bilgilerine erisilebilir, js vs erisilemez.
+                    SameSite = SameSiteMode.Strict, // Cross Site Requset Forgery saldirisi onler. 
+                                                    // sahte istekler gonderimi. kullanicinin farkinda olmadan
+                                                    // coockie bilgileriyle servera istek gonderilmesidir. 
+                                                    // Strict ile coockie bilgilerinin sadece kendi sitemizden geldiginde islenmesi.
+                    SecurePolicy = CookieSecurePolicy.SameAsRequest // SameAsRequest http ve https alabilir. Always yapacagim bilgilerin sadece https uzerinden gelmesi icin. 
                 };
-                opt.SlidingExpiration = true; // Tekrar �ifre giri�i gerekmez.
-                opt.ExpireTimeSpan = System.TimeSpan.FromHours(9); // S�resi.
+                opt.SlidingExpiration = true; // Tekrar sifre girisi gerekmez.
+                opt.ExpireTimeSpan = System.TimeSpan.FromHours(9); // Suresi.
                 opt.AccessDeniedPath = new PathString("/Admin/Auth/AccessDenied");
             });
         }

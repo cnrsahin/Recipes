@@ -3,26 +3,39 @@
         event.preventDefault();
         const id = $(this).attr('data-id');
 
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                foodCategoryId: id
-            },
-            url: '/Admin/FoodCategory/Delete/',
-            success: function () {
-                alert("Çöp kutusuna taşındı!");
-                window.location.href = 'FoodCategory';
-            },
-            error: function (error) {
-                console.log(error);
-                alert("Bu işlem için yetkiniz bulunmamaktadır!");
+        Swal.fire({
+            title: 'Silmek icin onayla?',
+            text: 'Bu kategori silinecektir!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Evet',
+            cancelButtonText: 'Hayır'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        foodCategoryId: id
+                    },
+                    url: '/Admin/FoodCategory/Delete/',
+                    success: function (data) {
+                        const model = jQuery.parseJSON(data);
+                        Swal.fire(model.Message, 'testttt', 'success').then((result) => window.location.href = 'FoodCategory' );
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        Swal.fire('Yetkiniz bulunmamaktadır!', '', 'error');
+                    }
+                });
             }
         });
     });
 
     $(function () {
-        /*  Modal Add form starts*/
+        /*  Modal form starts*/
         const placeModal = $('#placeModal');
         const url = '/Admin/FoodCategory/Add/';
         $('#AddBtn').click(function () {
@@ -31,8 +44,9 @@
                 placeModal.find(".modal").modal('show');
             });
         });
-        /* Modal Add form ends. */
+        /* Modal form ends. */
 
+        /* New Category */
         placeModal.on('click', '#btnSave', function (event) {
             event.preventDefault();
             const postForm = $('#categoryAdd');
@@ -40,9 +54,10 @@
             const dataSend = postForm.serialize();
 
             $.post(url, dataSend).done(function (data) {
-                toastr.info(data, 'Yeni Kategori Sonucu', {timeOut: 3000});
+                toastr.info(data, 'Yeni Kategori Sonucu', { timeOut: 3000 });
                 placeModal.find(".modal").modal('hide');
             });
         });
+        /* New Category */
     });
 });

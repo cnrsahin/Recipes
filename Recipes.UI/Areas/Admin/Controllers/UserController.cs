@@ -52,12 +52,12 @@ namespace Recipes.UI.Areas.Admin.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<JsonResult> DoActiveOrPassive(int userId)
+        public async Task<JsonResult> DoActive(int userId)
         {
             if (userId != 1)
             {
                 var user = await _userManager.FindByIdAsync(userId.ToString());
-                user.IsActive = user.IsActive ? false : true;
+                user.IsActive = true;
 
                 var updatedUser = await _userManager.UpdateAsync(user);
                 var result = JsonSerializer.Serialize(updatedUser);
@@ -65,7 +65,25 @@ namespace Recipes.UI.Areas.Admin.Controllers
                 return Json(result);
             }
 
-            return Json("Admin silinemez.");
+            return Json(null);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<JsonResult> DoPassive(int userId)
+        {
+            if (userId != 1)
+            {
+                var user = await _userManager.FindByIdAsync(userId.ToString());
+                user.IsActive = false;
+
+                var updatedUser = await _userManager.UpdateAsync(user);
+                var result = JsonSerializer.Serialize(updatedUser);
+
+                return Json(result);
+            }
+
+            return Json(null);
         }
     }
 }
