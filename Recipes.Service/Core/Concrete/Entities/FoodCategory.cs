@@ -10,10 +10,10 @@ namespace Recipes.Service.Core.Concrete.Entities
         public string CategoryName { get; set; }
         public string CategoryPicture { get; set; }
         public string CategoryDescription { get; set; }
-        public DateTime CreateDate { get; set; } = DateTime.Now;
-        public bool IsDeleted { get; set; } = false;
-        public bool IsConfirmed { get; set; } = false;
-        public string WhyNotConfirmed { get; set; } = null;
+        public DateTime CreateDate { get; set; }
+        public bool IsDeleted { get; set; }
+        public bool IsConfirmed { get; set; }
+        public string WhyNotConfirmed { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
         public ICollection<Recipe> Recipes { get; set; }

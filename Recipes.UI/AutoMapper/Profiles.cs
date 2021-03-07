@@ -13,6 +13,7 @@ namespace Recipes.UI.AutoMapper
             CreateMap<CommentIndexDto, Comment>().ReverseMap();
             CreateMap<UserIndexDto, User>().ReverseMap();
             CreateMap<FoodCategory, FoodCategoryAddDto>().ReverseMap();
+            CreateMap<FoodCategory, FoodCategoryUpdateDto>().ReverseMap();
         }
     }
 }

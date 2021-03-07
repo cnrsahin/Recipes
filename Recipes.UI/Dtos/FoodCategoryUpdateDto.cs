@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Recipes.UI.Dtos
 {
-    public class FoodCategoryAddDto
+    public class FoodCategoryUpdateDto
     {
         [DisplayName("Kategori Adı")]
         [Required(ErrorMessage = "{0} boş geçilmemelidir.")]

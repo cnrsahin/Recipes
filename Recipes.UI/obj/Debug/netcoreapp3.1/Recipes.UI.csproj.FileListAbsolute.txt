@@ -210,3 +210,4 @@ C:\Users\CANER\Desktop\Software\Recipes\Recipes.UI\obj\Debug\netcoreapp3.1\Recip
 C:\Users\CANER\Desktop\Software\Recipes\Recipes.UI\obj\Debug\netcoreapp3.1\Recipes.UI.dll
 C:\Users\CANER\Desktop\Software\Recipes\Recipes.UI\obj\Debug\netcoreapp3.1\Recipes.UI.pdb
 C:\Users\CANER\Desktop\Software\Recipes\Recipes.UI\obj\Debug\netcoreapp3.1\Recipes.UI.genruntimeconfig.cache
+C:\Users\CANER\Desktop\Software\Recipes\Recipes.UI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\FoodCategory\_FoodCategoryUpdatePartialView.cshtml.g.cs

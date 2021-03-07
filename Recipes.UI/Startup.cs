@@ -11,6 +11,7 @@ using Recipes.Service.Core.Concrete.Entities;
 using Recipes.Service.Data.Contexts;
 using Recipes.Service.Data.EntityFramework;
 using Recipes.UI.AutoMapper;
+using Recipes.UI.Helpers.ImageAddDel;
 using System;
 
 namespace Recipes.UI
@@ -36,6 +37,7 @@ namespace Recipes.UI
             services.AddScoped<IRecipeRepository, RecipeRepository>();
             services.AddScoped<IFoodCategoryRepository, FoodCategoryRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddSingleton<ImageHelper>();
 
             services.AddIdentity<User, Role>(opt =>
             {

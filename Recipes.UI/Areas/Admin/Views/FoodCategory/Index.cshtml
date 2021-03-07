@@ -36,7 +36,7 @@
                             <td><img src="~/Pictures/foodCategoryImgs/@category.CategoryPicture" class="table-image" /></td>
                             <td>@category.CategoryDescription</td>
                             <td>
-                                <button class="btn btn-sm btn-info">Güncelle</button>
+                                <button class="btn btn-sm btn-info" id="update" data-id="@category.Id">Güncelle</button>
                                 <button class="btn btn-sm btn-danger" id="delete" data-id="@category.Id">Sil</button>
                             </td>
                         </tr>
@@ -49,8 +49,7 @@
 
 @section Scripts {
     <script src="~/AdminPages/js/dataTableTurkish.js" type="text/ecmascript"></script>
-    <script src="AdminPages/js/toastrOptions.js" type="text/ecmascript"></script>
+    @*<script src="AdminPages/js/toastrOptions.js" type="text/ecmascript"></script>*@
     <script src="~/AdminPages/js/foodCategoryIndex.js" type="text/ecmascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" crossorigin="anonymous"></script>
-
 }
