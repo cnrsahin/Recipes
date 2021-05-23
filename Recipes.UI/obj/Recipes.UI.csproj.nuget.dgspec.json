@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\CANER\\Desktop\\Software\\Recipes\\Recipes.UI\\Recipes.UI.csproj": {}
+    "C:\\Users\\caner.sahin\\Desktop\\Caner\\Software\\Recipes\\Recipes.UI\\Recipes.UI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\CANER\\Desktop\\Software\\Recipes\\Recipes.Service\\Recipes.Service.csproj": {
+    "C:\\Users\\caner.sahin\\Desktop\\Caner\\Software\\Recipes\\Recipes.Service\\Recipes.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CANER\\Desktop\\Software\\Recipes\\Recipes.Service\\Recipes.Service.csproj",
+        "projectUniqueName": "C:\\Users\\caner.sahin\\Desktop\\Caner\\Software\\Recipes\\Recipes.Service\\Recipes.Service.csproj",
         "projectName": "Recipes.Service",
-        "projectPath": "C:\\Users\\CANER\\Desktop\\Software\\Recipes\\Recipes.Service\\Recipes.Service.csproj",
-        "packagesPath": "C:\\Users\\CANER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CANER\\Desktop\\Software\\Recipes\\Recipes.Service\\obj\\",
+        "projectPath": "C:\\Users\\caner.sahin\\Desktop\\Caner\\Software\\Recipes\\Recipes.Service\\Recipes.Service.csproj",
+        "packagesPath": "C:\\Users\\caner.sahin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\caner.sahin\\Desktop\\Caner\\Software\\Recipes\\Recipes.Service\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\CANER\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\caner.sahin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -88,26 +84,22 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\CANER\\Desktop\\Software\\Recipes\\Recipes.UI\\Recipes.UI.csproj": {
+    "C:\\Users\\caner.sahin\\Desktop\\Caner\\Software\\Recipes\\Recipes.UI\\Recipes.UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\CANER\\Desktop\\Software\\Recipes\\Recipes.UI\\Recipes.UI.csproj",
+        "projectUniqueName": "C:\\Users\\caner.sahin\\Desktop\\Caner\\Software\\Recipes\\Recipes.UI\\Recipes.UI.csproj",
         "projectName": "Recipes.UI",
-        "projectPath": "C:\\Users\\CANER\\Desktop\\Software\\Recipes\\Recipes.UI\\Recipes.UI.csproj",
-        "packagesPath": "C:\\Users\\CANER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\CANER\\Desktop\\Software\\Recipes\\Recipes.UI\\obj\\",
+        "projectPath": "C:\\Users\\caner.sahin\\Desktop\\Caner\\Software\\Recipes\\Recipes.UI\\Recipes.UI.csproj",
+        "packagesPath": "C:\\Users\\caner.sahin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\caner.sahin\\Desktop\\Caner\\Software\\Recipes\\Recipes.UI\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\CANER\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\caner.sahin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -120,8 +112,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\CANER\\Desktop\\Software\\Recipes\\Recipes.Service\\Recipes.Service.csproj": {
-                "projectPath": "C:\\Users\\CANER\\Desktop\\Software\\Recipes\\Recipes.Service\\Recipes.Service.csproj"
+              "C:\\Users\\caner.sahin\\Desktop\\Caner\\Software\\Recipes\\Recipes.Service\\Recipes.Service.csproj": {
+                "projectPath": "C:\\Users\\caner.sahin\\Desktop\\Caner\\Software\\Recipes\\Recipes.Service\\Recipes.Service.csproj"
               }
             }
           }
@@ -173,7 +165,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

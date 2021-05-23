@@ -29,8 +29,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var comments = await _commentRepository.GetAllAsync(c => !c.IsDeleted && c.IsConfirmed, c => c.Recipe, c => c.User);
-            if (comments == null)
-                return NotFound();
+            if (comments == null) return NotFound();
 
             var dto = _mapper.Map<IEnumerable<CommentIndexDto>>(comments);
 
@@ -54,8 +53,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> GetRemoved()
         {
             var comments = await _commentRepository.GetAllAsync(c => c.IsDeleted && c.IsConfirmed, c => c.Recipe, c => c.User);
-            if (comments == null)
-                return NotFound();
+            if (comments == null) return NotFound();
 
             var dto = _mapper.Map<IEnumerable<CommentIndexDto>>(comments);
 
@@ -103,8 +101,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> WaitConfirm()
         {
             var comments = await _commentRepository.GetAllAsync(c => !c.IsDeleted && !c.IsConfirmed, c => c.Recipe, c => c.User);
-            if (comments == null)
-                return NotFound();
+            if (comments == null) return NotFound();
 
             var dto = _mapper.Map<IEnumerable<CommentIndexDto>>(comments);
 
@@ -128,8 +125,7 @@ namespace Recipes.UI.Areas.Admin.Controllers
         public async Task<IActionResult> NotConfirmed()
         {
             var comments = await _commentRepository.GetAllAsync(c => c.IsDeleted && !c.IsConfirmed, c => c.Recipe, c => c.User);
-            if (comments == null)
-                return NotFound();
+            if (comments == null) return NotFound();
 
             var dto = _mapper.Map<IEnumerable<CommentIndexDto>>(comments);
 

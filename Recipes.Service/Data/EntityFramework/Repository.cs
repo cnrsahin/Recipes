@@ -12,13 +12,16 @@ namespace Recipes.Service.Data.EntityFramework
     public class Repository<T> : IRepository<T> where T : class, new()
     {
         protected readonly DbContext _context;
+        private readonly DbSet<T> _dbSet;
         public Repository(RecipeContext context)
         {
             _context = context;
+            _dbSet = _context.Set<T>();
         }
         public async Task AddAsync(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
+            //await _dbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
         }
 

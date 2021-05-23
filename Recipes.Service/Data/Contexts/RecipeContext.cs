@@ -9,9 +9,9 @@ namespace Recipes.Service.Data.Contexts
     public class RecipeContext : IdentityDbContext<User, Role, int, UserClaim,
         UserRole, UserLogin, RoleClaim, UserToken>
     {
-        public DbSet<FoodCategory> FoodCategories { get; set; }
-        public DbSet<Recipe> Recipes { get; set; }
-        public DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<FoodCategory> FoodCategories { get; set; }
+        public virtual DbSet<Recipe> Recipes { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
 
         public RecipeContext(DbContextOptions<RecipeContext> options) : base(options)
         { }
